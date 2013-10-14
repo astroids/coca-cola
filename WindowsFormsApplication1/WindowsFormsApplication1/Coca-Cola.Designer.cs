@@ -65,6 +65,7 @@
             this.trackASM.Size = new System.Drawing.Size(739, 45);
             this.trackASM.TabIndex = 2;
             this.trackASM.TickFrequency = 16;
+            this.trackASM.Scroll += new System.EventHandler(this.trackASM_Scroll);
             // 
             // labelCPP
             // 
@@ -100,14 +101,14 @@
             // openPict
             // 
             this.openPict.Name = "openPict";
-            this.openPict.Size = new System.Drawing.Size(152, 22);
+            this.openPict.Size = new System.Drawing.Size(103, 22);
             this.openPict.Text = "Op&en";
             this.openPict.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

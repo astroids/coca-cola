@@ -9,11 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using System.Drawing.Imaging;
+
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// lock bitse bak http://msdn.microsoft.com/en-us/library/ms229672.aspx
+        /// unmanaged buffer
+        /// </summary>
         public Bitmap bmpFront;
+        public byte[] Original;
+        static int imagesize;
+        static Rectangle picRect;
+        BitmapData bitdata;
+
         public Form1()
         {
             InitializeComponent();
@@ -51,8 +62,9 @@ namespace WindowsFormsApplication1
                     {
                         // load image to bitmap handle
                        // bmpFront = new Bitmap(new MemoryStream(Image.FromFile(asd.))).GetHbitmap();
+                        // COPY ATM CHANGE TO HANDLE
                         bmpFront = (Bitmap)Image.FromFile(asd.FileName);
-                        //MessageBox.Show("Not implemanted yet");
+                        SaveOriginal(bmpFront);
 
                         pic.Image = bmpFront;
                         trackASM.Enabled = true;
@@ -65,6 +77,30 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+        //bu c++ move olabilir
+        public void SaveOriginal(Bitmap source)
+        {
+                            //  clear old image if you can  NOT IMPLEMENTED YET
+            Original = new byte[imagesize];
+
+            //lock bits and stuff
+            picRect.Width = source.Width;
+            picRect.Height = source.Height;
+
+            //SON DEGERI MMX E  UYMAZSA DEGISTIRMEYI DENE
+            bitdata = source.LockBits(picRect,ImageLockMode.ReadOnly,PixelFormat.Format24bppRgb);
+            unsafe
+            {
+                byte* p = (byte*)bitdata.Scan0.ToInt64();
+            
+                for (int i = 0; i < imagesize; i++)
+                {
+                    Original[i] = *p++;
+                }
+            }
+            source.UnlockBits(bitdata);
+        }
+
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -77,6 +113,11 @@ namespace WindowsFormsApplication1
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void trackASM_Scroll(object sender, EventArgs e)
         {
 
         }
