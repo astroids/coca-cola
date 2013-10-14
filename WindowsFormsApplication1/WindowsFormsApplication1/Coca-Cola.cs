@@ -13,11 +13,12 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        public IntPtr bmpFront;
+        public Bitmap bmpFront;
         public Form1()
         {
             InitializeComponent();
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -42,14 +43,19 @@ namespace WindowsFormsApplication1
         private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             OpenFileDialog asd = new OpenFileDialog();
-            if (asd.ShowDialog() == DialogResult.OK)
+            if (asd.ShowDialog() == DialogResult.OK)        //file dialog acildi eger secerse bi resim
             {
                 try
                 {
                    
                     {
+                        // load image to bitmap handle
                        // bmpFront = new Bitmap(new MemoryStream(Image.FromFile(asd.))).GetHbitmap();
-                        MessageBox.Show("Not implemanted yet");
+                        bmpFront = (Bitmap)Image.FromFile(asd.FileName);
+                        //MessageBox.Show("Not implemanted yet");
+
+                        pic.Image = bmpFront;
+                        trackASM.Enabled = true;
                     }
                 }
                 catch (Exception)
