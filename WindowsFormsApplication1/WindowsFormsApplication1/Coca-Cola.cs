@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+
 
 namespace WindowsFormsApplication1
 {
@@ -24,6 +27,11 @@ namespace WindowsFormsApplication1
         static int imagesize;
         static Rectangle picRect;
         BitmapData bitdata;
+
+
+        Stopwatch stopCsharp = new Stopwatch();
+
+
 
         public Form1()
         {
@@ -117,8 +125,32 @@ namespace WindowsFormsApplication1
 
         }
 
+        
+        
+         [DllImport("search.dll")] static unsafe extern void adjustb(byte* sour,Int32 bar);
+                      
+        
+        /// <summary>
+        /// adjustb   olcak  bu dll c adi
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+       
+
         private void trackASM_Scroll(object sender, EventArgs e)
         {
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            //simdiden zaman tutmaca
+            stopCsharp.Start();
+            unsafe
+            {
+                adjustb((byte*)bitdata.Scan0.ToPointer(), trackASM.Value);
+
+
+            }
+            stopCsharp.Stop();
+
 
         }
 
