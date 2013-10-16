@@ -24,9 +24,9 @@ namespace WindowsFormsApplication1
         /// </summary>
         public Bitmap bmpFront;
         public byte[] Original;
-        static int imagesize;
-        static Rectangle picRect;
-        BitmapData bitdata;
+        private static Int32 imagesize = 0;
+        public static Rectangle picRect;
+        public BitmapData bitdata;
 
 
         Stopwatch stopCsharp = new Stopwatch();
@@ -127,7 +127,7 @@ namespace WindowsFormsApplication1
 
         
         
-         [DllImport("search.dll")] static unsafe extern void adjustb(byte* sour,Int32 bar);
+         [DllImport("search.dll")] static unsafe extern void adjustb(byte* sour,short bar,Int32 imgSize,byte* orig);
                       
         
         /// <summary>
@@ -145,12 +145,16 @@ namespace WindowsFormsApplication1
             stopCsharp.Start();
             unsafe
             {
-                adjustb((byte*)bitdata.Scan0.ToPointer(), trackASM.Value);
+
+                //yukariyida fixlememiz gerekiyo glba
+                fixed(byte* or = Original)
+
+                adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize,or);
 
 
             }
             stopCsharp.Stop();
-
+            labelCPP.Text = stopCsharp.ToString();
 
         }
 
