@@ -14,6 +14,24 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 
+/*
+TO DO LIST
+
+ * 1)fix handles
+ * 2)write in ASM
+ * 3)start second algorithms if above works 
+ * 
+ * 
+ * NON IMPORTANT STUFF
+ * )reset trackbar after every pic load
+
+
+
+
+
+
+
+*/
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
@@ -142,6 +160,8 @@ namespace WindowsFormsApplication1
         {
             bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
             //simdiden zaman tutmaca
+
+           
             stopCsharp.Start();
             unsafe
             {
@@ -155,8 +175,16 @@ namespace WindowsFormsApplication1
 
             }
             stopCsharp.Stop();
-            labelCPP.Text = stopCsharp.ToString();
+            labelCPP.Text = stopCsharp.Elapsed.ToString();
+            stopCsharp.Reset();
+            pic.Image = bmpFront;
+                
             bmpFront.UnlockBits(bitdata);
+        }
+
+        private void pic_Click(object sender, EventArgs e)
+        {
+
         }
 
 
