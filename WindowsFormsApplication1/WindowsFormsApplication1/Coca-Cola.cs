@@ -147,15 +147,16 @@ namespace WindowsFormsApplication1
             {
 
                 //yukariyida fixlememiz gerekiyo glba
-                fixed(byte* or = Original)
+                fixed (byte* or = Original)
+                {
 
-                adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize,or);
-
+                    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);
+                }
 
             }
             stopCsharp.Stop();
             labelCPP.Text = stopCsharp.ToString();
-
+            bmpFront.UnlockBits(bitdata);
         }
 
 

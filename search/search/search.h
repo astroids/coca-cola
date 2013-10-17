@@ -1,7 +1,7 @@
-#ifdef MEHLIB_EXPORTS
-#define MEHLIB_API __declspec(dllexport)
+#ifdef SEARCHING_EXPORTS
+#define SEARCHING_API __declspec(dllexport)
 #else 
-#define MEHLIB_API __declspec(dllimport)
+#define SEARCHING_API __declspec(dllimport)
 #endif
 extern "C" {
 		//r8 de gitti register yetmicek :D
