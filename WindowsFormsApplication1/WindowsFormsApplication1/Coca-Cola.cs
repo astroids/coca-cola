@@ -23,7 +23,9 @@ TO DO LIST
  * 
  * 
  * NON IMPORTANT STUFF
- * )reset trackbar after every pic load
+ * 1)reset trackbar after every pic load
+ * 2)text format
+ * 3)del unused funs
 
 
 
@@ -103,10 +105,23 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+        public void clearImage()
+        {
+            if (Original != null)
+            {
+                Original = null;
+            }
+        }
+
+
+
+
         //bu c++ move olabilir
         public void SaveOriginal(Bitmap source)
-        {
-                            //  clear old image if you can  NOT IMPLEMENTED YET
+        {                            
+            clearImage();
+            imagesize = source.Width * source.Height * 3;
             Original = new byte[imagesize];
 
             //lock bits and stuff
@@ -117,7 +132,7 @@ namespace WindowsFormsApplication1
             bitdata = source.LockBits(picRect,ImageLockMode.ReadOnly,PixelFormat.Format24bppRgb);
             unsafe
             {
-                byte* p = (byte*)bitdata.Scan0.ToInt64();
+                byte* p = (byte*)bitdata.Scan0.ToPointer();
             
                 for (int i = 0; i < imagesize; i++)
                 {
@@ -167,10 +182,35 @@ namespace WindowsFormsApplication1
             {
 
                 //yukariyida fixlememiz gerekiyo glba
-                fixed (byte* or = Original)
+                fixed (byte* or = Original )
                 {
 
-                    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);
+                //    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);                          //  FIX AFTER DEBUG
+
+                    //adjustb((byte*)bitdata.Scan0.ToPointer(), (short)60, imagesize, or);  
+                  
+                    byte* norm = (byte*)bitdata.Scan0.ToPointer();
+                       int size = imagesize;
+                        short bar = (short)trackASM.Value;
+                        for (int i = 0; i < size; i++)
+                        {
+                            if ((short)or[i] + bar < 0)
+                            {
+                                norm[i] = 0;
+                            }
+                            else if ((short)or[i] + bar > 255)
+                            {
+                                norm[i] = 255;
+                            }
+                            else
+                            {
+                                 norm[i] = (byte)(or[i] + bar);         //duzelt olmazsa rollback
+                            }
+
+                        
+                    }
+                    
+                    
                 }
 
             }
@@ -180,6 +220,7 @@ namespace WindowsFormsApplication1
             pic.Image = bmpFront;
                 
             bmpFront.UnlockBits(bitdata);
+
         }
 
         private void pic_Click(object sender, EventArgs e)
