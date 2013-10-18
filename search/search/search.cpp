@@ -8,6 +8,10 @@
 #include "search.h"
 #include <stdexcept>
 		
+void  adjustASM(unsigned char* norm, unsigned char * ori, short bar, INT32 size);
+
+
+/*
 extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm,short bar, INT32 size ,unsigned char * ori){
 	for (size_t i = 0; i < size; i++)
 	{
@@ -24,4 +28,4 @@ extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm,short bar, IN
 		
 	}
 }}
-
+*/

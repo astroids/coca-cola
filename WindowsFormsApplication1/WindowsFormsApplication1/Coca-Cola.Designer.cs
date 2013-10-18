@@ -36,9 +36,11 @@
             this.openPict = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileBrowse = new System.Windows.Forms.OpenFileDialog();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackASM)).BeginInit();
             this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pic
@@ -119,11 +121,25 @@
             this.fileBrowse.Filter = "Pictures|*.jpg;*.bmp;*.jpeg;";
             this.fileBrowse.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar1.Enabled = false;
+            this.trackBar1.Location = new System.Drawing.Point(12, 426);
+            this.trackBar1.Maximum = 255;
+            this.trackBar1.Minimum = -255;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(739, 45);
+            this.trackBar1.TabIndex = 5;
+            this.trackBar1.TickFrequency = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 483);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.labelCPP);
             this.Controls.Add(this.trackASM);
             this.Controls.Add(this.pic);
@@ -135,6 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackASM)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,6 +167,7 @@
         private System.Windows.Forms.ToolStripMenuItem openPict;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog fileBrowse;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 

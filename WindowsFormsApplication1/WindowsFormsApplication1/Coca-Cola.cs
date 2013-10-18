@@ -121,7 +121,7 @@ namespace WindowsFormsApplication1
         public void SaveOriginal(Bitmap source)
         {                            
             clearImage();
-            imagesize = source.Width * source.Height * 3;
+            imagesize = source.Width * source.Height * 3;//rgb oldugu icin 3 le carpiyoz
             Original = new byte[imagesize];
 
             //lock bits and stuff
@@ -160,7 +160,9 @@ namespace WindowsFormsApplication1
 
         
         
-         [DllImport("search.dll")] static unsafe extern void adjustb(byte* sour,short bar,Int32 imgSize,byte* orig);
+         // [DllImport("search.dll")] static unsafe extern void adjustb(byte* sour,short bar,Int32 imgSize,byte* orig);  // cpp
+         [DllImport("search.dll")] static unsafe extern void adjustASM(byte* sour,byte* orig,short bar,Int32 imgSize);   //asm
+        
                       
         
         /// <summary>
@@ -185,10 +187,11 @@ namespace WindowsFormsApplication1
                 fixed (byte* or = Original )
                 {
 
-                //    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);                          //  FIX AFTER DEBUG
+                   // adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);                          //  FIX AFTER DEBUG
+                    adjustASM((byte*)bitdata.Scan0.ToPointer(),or, (short)trackASM.Value, imagesize);                          //  FIX AFTER DEBUG
 
                     //adjustb((byte*)bitdata.Scan0.ToPointer(), (short)60, imagesize, or);  
-                  
+                  /*
                     byte* norm = (byte*)bitdata.Scan0.ToPointer();
                        int size = imagesize;
                         short bar = (short)trackASM.Value;
@@ -210,7 +213,7 @@ namespace WindowsFormsApplication1
                         
                     }
                     
-                    
+                    */
                 }
 
             }
