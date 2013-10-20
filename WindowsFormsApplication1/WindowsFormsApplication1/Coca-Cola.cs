@@ -161,7 +161,7 @@ namespace WindowsFormsApplication1
         
         
          // [DllImport("search.dll")] static unsafe extern void adjustb(byte* sour,short bar,Int32 imgSize,byte* orig);  // cpp
-         [DllImport("search.dll")] static unsafe extern void adjustASM(byte* sour,byte* orig,short bar,Int32 imgSize);   //asm
+         [DllImport("mehlib.dll")] static unsafe extern void adjustASMadap(byte* sour,byte* orig,short bar,Int32 imgSize);   //asm
         
                       
         
@@ -188,7 +188,7 @@ namespace WindowsFormsApplication1
                 {
 
                    // adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);                          //  FIX AFTER DEBUG
-                    adjustASM((byte*)bitdata.Scan0.ToPointer(),or, (short)trackASM.Value, imagesize);                          //  FIX AFTER DEBUG
+                    adjustASMadap((byte*)bitdata.Scan0.ToPointer(),or, (short)trackASM.Value, imagesize);                          //  FIX AFTER DEBUG
 
                     //adjustb((byte*)bitdata.Scan0.ToPointer(), (short)60, imagesize, or);  
                   /*
