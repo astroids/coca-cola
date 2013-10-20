@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Drawing;
+//using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -50,8 +50,8 @@ namespace WindowsFormsApplication1
 
 
         Stopwatch stopCsharp = new Stopwatch();
-
-
+        Stopwatch stopCPP = new Stopwatch();
+        Stopwatch stopASM = new Stopwatch();
 
         public Form1()
         {
@@ -69,7 +69,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void labelCPP_Click(object sender, EventArgs e)
+        private void labelCS_Click(object sender, EventArgs e)
         {
 
         }
@@ -95,6 +95,8 @@ namespace WindowsFormsApplication1
                         SaveOriginal(bmpFront);
 
                         pic.Image = bmpFront;
+                        trackCS.Enabled = true;
+                        trackCPP.Enabled = true;
                         trackASM.Enabled = true;
                     }
                 }
@@ -121,7 +123,7 @@ namespace WindowsFormsApplication1
         public void SaveOriginal(Bitmap source)
         {                            
             clearImage();
-            imagesize = source.Width * source.Height * 3;//rgb oldugu icin 3 le carpiyoz
+            imagesize = source.Width * source.Height * 3;
             Original = new byte[imagesize];
 
             //lock bits and stuff
@@ -160,9 +162,6 @@ namespace WindowsFormsApplication1
 
         
         
-         // [DllImport("search.dll")] static unsafe extern void adjustb(byte* sour,short bar,Int32 imgSize,byte* orig);  // cpp
-         [DllImport("mehlib.dll")] static unsafe extern void adjustASMadap(byte* sour,byte* orig,short bar,Int32 imgSize);   //asm
-        
                       
         
         /// <summary>
@@ -173,7 +172,7 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
        
 
-        private void trackASM_Scroll(object sender, EventArgs e)
+        private void trackCS_Scroll(object sender, EventArgs e)
         {
             bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
             //simdiden zaman tutmaca
@@ -187,14 +186,13 @@ namespace WindowsFormsApplication1
                 fixed (byte* or = Original )
                 {
 
-                   // adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);                          //  FIX AFTER DEBUG
-                    adjustASMadap((byte*)bitdata.Scan0.ToPointer(),or, (short)trackASM.Value, imagesize);                          //  FIX AFTER DEBUG
+                //    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);                          //  FIX AFTER DEBUG
 
                     //adjustb((byte*)bitdata.Scan0.ToPointer(), (short)60, imagesize, or);  
-                  /*
+                  
                     byte* norm = (byte*)bitdata.Scan0.ToPointer();
                        int size = imagesize;
-                        short bar = (short)trackASM.Value;
+                        short bar = (short)trackCS.Value;
                         for (int i = 0; i < size; i++)
                         {
                             if ((short)or[i] + bar < 0)
@@ -213,12 +211,12 @@ namespace WindowsFormsApplication1
                         
                     }
                     
-                    */
+                    
                 }
 
             }
             stopCsharp.Stop();
-            labelCPP.Text = stopCsharp.Elapsed.ToString();
+            labelCS.Text = stopCsharp.Elapsed.ToString();
             stopCsharp.Reset();
             pic.Image = bmpFront;
                 
@@ -228,6 +226,59 @@ namespace WindowsFormsApplication1
 
         private void pic_Click(object sender, EventArgs e)
         {
+
+        }
+
+        [DllImport("mehlib.dll")]
+        static unsafe extern void adjustb(byte* sour, short bar, Int32 imgSize, byte* orig);
+
+        private void trackCPP_Scroll(object sender, EventArgs e)
+        {
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            stopCPP.Start();
+            unsafe
+            {
+                fixed (byte* or = Original)
+                {
+                    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackCPP.Value, imagesize, or); 
+
+                }
+
+
+            }
+            stopCPP.Stop();
+            labelCPP.Text = stopCPP.Elapsed.ToString();
+            stopCPP.Reset();
+            pic.Image = bmpFront;
+            bmpFront.UnlockBits(bitdata);
+
+
+        }
+        [DllImport("mehlib.dll")]
+        static unsafe extern void adjustASMadap(byte* source, short bar, Int32 size, byte* ori);
+        
+        private void trackASM_Scroll(object sender, EventArgs e)
+        {
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            stopASM.Start();
+            unsafe
+            {
+                fixed (byte* or = Original)
+                {
+                    adjustASMadap((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);
+
+                }
+
+
+            }
+            stopASM.Stop();
+            labelASM.Text = stopASM.Elapsed.ToString();
+            stopASM.Reset();
+            pic.Image = bmpFront;
+            bmpFront.UnlockBits(bitdata);
+
+
+
 
         }
 
