@@ -17,7 +17,7 @@ extern "C" {int __declspec(dllexport)  add(int a, int b){
 extern "C" __declspec(dllexport) void adjustASM(unsigned char* norm, unsigned char * ori, short bar, INT32 size);
 
 extern "C"{
-	__declspec(dllexport) void adjustASMadap(unsigned char* _norm, unsigned char * _ori, short _bar, INT32 _size)
+	__declspec(dllexport) void adjustASMadap(unsigned char* _norm, short _bar, INT32 _size, unsigned char * _ori)
 	{
 		adjustASM(_norm, _ori, _bar, _size);
 	}

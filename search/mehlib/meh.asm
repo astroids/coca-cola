@@ -1,3 +1,5 @@
+.data
+
 .code 
 ;void adjustASM(unsigned char* norm,	rcx
 ;			unsigned char * ori,		rdx
@@ -21,7 +23,7 @@ mainadd:
 	inc r10 ;	i++
 	dec r9d ;  image size 0 oluncaya kadar loop
 	jnz	mainadd
-	
+	ret
 	
 decrease:
 	mov r11w,0;
