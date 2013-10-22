@@ -40,6 +40,8 @@
             this.trackASM = new System.Windows.Forms.TrackBar();
             this.labelCPP = new System.Windows.Forms.Label();
             this.labelASM = new System.Windows.Forms.Label();
+            this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCS)).BeginInit();
             this.menu.SuspendLayout();
@@ -88,7 +90,8 @@
             // menu
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.findToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(868, 24);
@@ -108,14 +111,14 @@
             // openPict
             // 
             this.openPict.Name = "openPict";
-            this.openPict.Size = new System.Drawing.Size(103, 22);
+            this.openPict.Size = new System.Drawing.Size(152, 22);
             this.openPict.Text = "Op&en";
             this.openPict.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -173,6 +176,21 @@
             this.labelASM.TabIndex = 8;
             this.labelASM.Text = "ASM average";
             // 
+            // findToolStripMenuItem
+            // 
+            this.findToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.findCToolStripMenuItem});
+            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.findToolStripMenuItem.Text = "Find";
+            // 
+            // findCToolStripMenuItem
+            // 
+            this.findCToolStripMenuItem.Name = "findCToolStripMenuItem";
+            this.findCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.findCToolStripMenuItem.Text = "Find C#";
+            this.findCToolStripMenuItem.Click += new System.EventHandler(this.findCToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,6 +232,8 @@
         private System.Windows.Forms.TrackBar trackASM;
         private System.Windows.Forms.Label labelCPP;
         private System.Windows.Forms.Label labelASM;
+        private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findCToolStripMenuItem;
     }
 }
 

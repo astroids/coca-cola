@@ -282,6 +282,60 @@ namespace WindowsFormsApplication1
 
         }
 
+        public int flag;
+        public bool incflag()
+        {
+            flag++;
+            if (flag > 3)
+                return true;
+            else return false;
+        }
 
-    }
+
+
+        private void findCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+             bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            
+            //kirmizi 
+            
+           
+            stopCsharp.Start();
+            unsafe
+            {
+                byte* norm = (byte*)bitdata.Scan0.ToPointer();
+
+                //yukariyida fixlememiz gerekiyo glba
+                fixed (byte* or = Original)
+                {
+                    for (int i = 2; i < imagesize; i+=3)
+                    {
+                        if (norm[i] > 150)
+                        {
+                            if(norm[i-2]<70&&norm[i-1]<70){
+                                incflag();
+                                if(incflag()){
+                                    for(int j = i-30;j<i;j++){
+                                        norm[j] = 0;
+                                    }
+                                }
+                            } 
+                        }
+                        }
+                
+
+                    }
+
+
+                }
+                stopCsharp.Stop();
+                labelCS.Text = stopCsharp.Elapsed.ToString();
+                stopCsharp.Reset();
+                pic.Image = bmpFront;
+
+                bmpFront.UnlockBits(bitdata);
+            }
+        }
+
+
 }
