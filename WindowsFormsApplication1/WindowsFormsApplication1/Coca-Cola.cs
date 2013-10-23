@@ -216,7 +216,7 @@ namespace WindowsFormsApplication1
 
             }
             stopCsharp.Stop();
-            labelCS.Text = stopCsharp.Elapsed.ToString();
+            labelCS.Text = stopCsharp.ElapsedTicks.ToString();
             stopCsharp.Reset();
             pic.Image = bmpFront;
                 
@@ -247,7 +247,7 @@ namespace WindowsFormsApplication1
 
             }
             stopCPP.Stop();
-            labelCPP.Text = stopCPP.Elapsed.ToString();
+            labelCPP.Text = stopCPP.ElapsedTicks.ToString();
             stopCPP.Reset();
             pic.Image = bmpFront;
             bmpFront.UnlockBits(bitdata);
@@ -272,7 +272,7 @@ namespace WindowsFormsApplication1
 
             }
             stopASM.Stop();
-            labelASM.Text = stopASM.Elapsed.ToString();
+            labelASM.Text = stopASM.ElapsedTicks.ToString();
             stopASM.Reset();
             pic.Image = bmpFront;
             bmpFront.UnlockBits(bitdata);
@@ -312,7 +312,7 @@ namespace WindowsFormsApplication1
                     {
                         if (norm[i] > 150)
                         {
-                            if(norm[i-2]<70&&norm[i-1]<70){
+                            if(norm[i-2]<50&&norm[i-1]<50){
                                 incflag();
                                 if(incflag()){
                                     for(int j = i-30;j<i;j++){
@@ -329,7 +329,7 @@ namespace WindowsFormsApplication1
 
                 }
                 stopCsharp.Stop();
-                labelCS.Text = stopCsharp.Elapsed.ToString();
+                labelCS.Text = stopCsharp.ElapsedTicks.ToString();
                 stopCsharp.Reset();
                 pic.Image = bmpFront;
 

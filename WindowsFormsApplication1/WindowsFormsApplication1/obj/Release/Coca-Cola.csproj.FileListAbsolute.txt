@@ -7,3 +7,6 @@ G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\Rele
 G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe
 G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.pdb
 G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
+G:\Engi\gityedek\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe.config
+G:\Engi\gityedek\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
+G:\Engi\gityedek\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
