@@ -12,7 +12,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-
+using System.Text;
 
 /*
 TO DO LIST
@@ -296,10 +296,7 @@ namespace WindowsFormsApplication1
         private void findCToolStripMenuItem_Click(object sender, EventArgs e)
         {
              bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
-            
-            //kirmizi 
-            
-           
+
             stopCsharp.Start();
             unsafe
             {
@@ -312,7 +309,7 @@ namespace WindowsFormsApplication1
                     {
                         if (norm[i] > 150)
                         {
-                            if(norm[i-2]<50&&norm[i-1]<50){
+                            if(norm[i-2]<90&&norm[i-1]<90){
                                 incflag();
                                 if(incflag()){
                                     for(int j = i-30;j<i;j++){
@@ -328,6 +325,13 @@ namespace WindowsFormsApplication1
 
 
                 }
+      
+
+
+
+
+
+
                 stopCsharp.Stop();
                 labelCS.Text = stopCsharp.ElapsedTicks.ToString();
                 stopCsharp.Reset();
@@ -335,7 +339,30 @@ namespace WindowsFormsApplication1
 
                 bmpFront.UnlockBits(bitdata);
             }
+
+        private int flag2=0;
+        private void incflag2(){
+            flag2++;
+
+
         }
+
+
+
+        private void findC2ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            string asd = null;
+
+            for (int i = 0; i < Original.Length; i++)
+            {
+                asd += (string)(Original + " ");
+                if ((i % 3) == 0)
+                    asd += "  ";
+            }
+            System.IO.File.WriteAllText(@"M:\lol.txt", asd);
+
+        }
+   }
 
 
 }
