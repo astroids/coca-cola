@@ -98,6 +98,7 @@ namespace WindowsFormsApplication1
                         trackCS.Enabled = true;
                         trackCPP.Enabled = true;
                         trackASM.Enabled = true;
+                        findToolStripMenuItem.Enabled = true;
                     }
                 }
                 catch (Exception)
@@ -307,9 +308,9 @@ namespace WindowsFormsApplication1
                 {
                     for (int i = 2; i < imagesize; i+=3)
                     {
-                        if (norm[i] > 150)
+                        if (norm[i] > 85)
                         {
-                            if(norm[i-2]<90&&norm[i-1]<90){
+                            if(norm[i-2]<30&&norm[i-1]<30){
                                 incflag();
                                 if(incflag()){
                                     for(int j = i-30;j<i;j++){
@@ -352,15 +353,22 @@ namespace WindowsFormsApplication1
         private void findC2ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             string asd = null;
+                         bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
 
-            for (int i = 0; i < Original.Length; i++)
+            stopCsharp.Start();
+            unsafe
             {
-                asd += (string)(Original + " ");
-                if ((i % 3) == 0)
-                    asd += "  ";
+                byte* norm = (byte*)bitdata.Scan0.ToPointer();
+                for (int i = 0; i < Original.Length; i++)
+                {
+                    asd += (string)(norm[i] + " ");
+                    if ((i % 3) == 0)
+                    {
+                        asd += "  ";
+                    }
+                }
+                System.IO.File.WriteAllText(@"lol.txt", asd);
             }
-            System.IO.File.WriteAllText(@"M:\lol.txt", asd);
-
         }
    }
 

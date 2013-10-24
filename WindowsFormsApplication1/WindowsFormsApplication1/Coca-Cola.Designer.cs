@@ -128,6 +128,7 @@
             this.findToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.findCToolStripMenuItem,
             this.findC2ToolStripMenuItem});
+            this.findToolStripMenuItem.Enabled = false;
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
             this.findToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.findToolStripMenuItem.Text = "Find";
@@ -196,8 +197,8 @@
             // findC2ToolStripMenuItem
             // 
             this.findC2ToolStripMenuItem.Name = "findC2ToolStripMenuItem";
-            this.findC2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.findC2ToolStripMenuItem.Text = "Find C# 2";
+            this.findC2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findC2ToolStripMenuItem.Text = "C# MColor Analizer ";
             this.findC2ToolStripMenuItem.Click += new System.EventHandler(this.findC2ToolStripMenuItem_Click_1);
             // 
             // Form1
