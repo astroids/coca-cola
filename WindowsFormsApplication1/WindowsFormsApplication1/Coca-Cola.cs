@@ -16,6 +16,11 @@ using System.Text;
 
 /*
 TO DO LIST
+ * 
+ * Fonksiyonlari namespacelere ayir
+ * 
+ * 
+ * 
 
  * 1)fix handles
  * 2)write in ASM
@@ -26,6 +31,7 @@ TO DO LIST
  * 1)reset trackbar after every pic load
  * 2)text format
  * 3)del unused funs
+ * 
 
 
 
@@ -86,10 +92,10 @@ namespace WindowsFormsApplication1
             {
                 try
                 {
-                   
+
                     {
                         // load image to bitmap handle
-                       // bmpFront = new Bitmap(new MemoryStream(Image.FromFile(asd.))).GetHbitmap();
+                        // bmpFront = new Bitmap(new MemoryStream(Image.FromFile(asd.))).GetHbitmap();
                         // COPY ATM CHANGE TO HANDLE
                         bmpFront = (Bitmap)Image.FromFile(asd.FileName);
                         SaveOriginal(bmpFront);
@@ -122,7 +128,7 @@ namespace WindowsFormsApplication1
 
         //bu c++ move olabilir
         public void SaveOriginal(Bitmap source)
-        {                            
+        {
             clearImage();
             imagesize = source.Width * source.Height * 3;
             Original = new byte[imagesize];
@@ -132,11 +138,11 @@ namespace WindowsFormsApplication1
             picRect.Height = source.Height;
 
             //SON DEGERI MMX E  UYMAZSA DEGISTIRMEYI DENE
-            bitdata = source.LockBits(picRect,ImageLockMode.ReadOnly,PixelFormat.Format24bppRgb);
+            bitdata = source.LockBits(picRect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
             unsafe
             {
                 byte* p = (byte*)bitdata.Scan0.ToPointer();
-            
+
                 for (int i = 0; i < imagesize; i++)
                 {
                     Original[i] = *p++;
@@ -161,58 +167,58 @@ namespace WindowsFormsApplication1
 
         }
 
-        
-        
-                      
-        
+
+
+
+
         /// <summary>
         /// adjustb   olcak  bu dll c adi
         /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-       
+
 
         private void trackCS_Scroll(object sender, EventArgs e)
         {
             bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
             //simdiden zaman tutmaca
 
-           
+
             stopCsharp.Start();
             unsafe
             {
 
                 //yukariyida fixlememiz gerekiyo glba
-                fixed (byte* or = Original )
+                fixed (byte* or = Original)
                 {
 
-                //    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);                          //  FIX AFTER DEBUG
+                    //    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);                          //  FIX AFTER DEBUG
 
                     //adjustb((byte*)bitdata.Scan0.ToPointer(), (short)60, imagesize, or);  
-                  
-                    byte* norm = (byte*)bitdata.Scan0.ToPointer();
-                       int size = imagesize;
-                        short bar = (short)trackCS.Value;
-                        for (int i = 0; i < size; i++)
-                        {
-                            if ((short)or[i] + bar < 0)
-                            {
-                                norm[i] = 0;
-                            }
-                            else if ((short)or[i] + bar > 255)
-                            {
-                                norm[i] = 255;
-                            }
-                            else
-                            {
-                                 norm[i] = (byte)(or[i] + bar);         //duzelt olmazsa rollback
-                            }
 
-                        
+                    byte* norm = (byte*)bitdata.Scan0.ToPointer();
+                    int size = imagesize;
+                    short bar = (short)trackCS.Value;
+                    for (int i = 0; i < size; i++)
+                    {
+                        if ((short)or[i] + bar < 0)
+                        {
+                            norm[i] = 0;
+                        }
+                        else if ((short)or[i] + bar > 255)
+                        {
+                            norm[i] = 255;
+                        }
+                        else
+                        {
+                            norm[i] = (byte)(or[i] + bar);         //duzelt olmazsa rollback
+                        }
+
+
                     }
-                    
-                    
+
+
                 }
 
             }
@@ -220,7 +226,7 @@ namespace WindowsFormsApplication1
             labelCS.Text = stopCsharp.ElapsedTicks.ToString();
             stopCsharp.Reset();
             pic.Image = bmpFront;
-                
+
             bmpFront.UnlockBits(bitdata);
 
         }
@@ -241,7 +247,7 @@ namespace WindowsFormsApplication1
             {
                 fixed (byte* or = Original)
                 {
-                    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackCPP.Value, imagesize, or); 
+                    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackCPP.Value, imagesize, or);
 
                 }
 
@@ -257,7 +263,7 @@ namespace WindowsFormsApplication1
         }
         [DllImport("mehlib.dll")]
         static unsafe extern void adjustASMadap(byte* source, short bar, Int32 size, byte* ori);
-        
+
         private void trackASM_Scroll(object sender, EventArgs e)
         {
             bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
@@ -296,7 +302,7 @@ namespace WindowsFormsApplication1
 
         private void findCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
 
             stopCsharp.Start();
             unsafe
@@ -306,43 +312,47 @@ namespace WindowsFormsApplication1
                 //yukariyida fixlememiz gerekiyo glba
                 fixed (byte* or = Original)
                 {
-                    for (int i = 2; i < imagesize; i+=3)
+                    for (int i = 2; i < imagesize; i += 3)
                     {
                         if (norm[i] > 85)
                         {
-                            if(norm[i-2]<30&&norm[i-1]<30){
+                            if (norm[i - 2] < 30 && norm[i - 1] < 30)
+                            {
                                 incflag();
-                                if(incflag()){
-                                    for(int j = i-30;j<i;j++){
+                                if (incflag())
+                                {
+                                    for (int j = i - 30; j < i; j++)
+                                    {
                                         norm[j] = 0;
                                     }
                                 }
-                            } 
+                            }
                         }
-                        }
-                
-
                     }
 
 
                 }
-      
 
 
-
-
-
-
-                stopCsharp.Stop();
-                labelCS.Text = stopCsharp.ElapsedTicks.ToString();
-                stopCsharp.Reset();
-                pic.Image = bmpFront;
-
-                bmpFront.UnlockBits(bitdata);
             }
 
-        private int flag2=0;
-        private void incflag2(){
+
+
+
+
+
+
+            stopCsharp.Stop();
+            labelCS.Text = stopCsharp.ElapsedTicks.ToString();
+            stopCsharp.Reset();
+            pic.Image = bmpFront;
+
+            bmpFront.UnlockBits(bitdata);
+        }
+
+        private int flag2 = 0;
+        private void incflag2()
+        {
             flag2++;
 
 
@@ -371,8 +381,8 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private int redFlag=0;
-        private int whiteFlag=0;
+        private int redFlag = 0;
+        private int whiteFlag = 0;
         private int paras = 0;
         private void incRed()
         {
@@ -385,7 +395,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private unsafe bool isItRed(byte* norm,int i)
+        private unsafe bool isItRed(byte* norm, int i)
         {
             if (norm[i] > 85)
             {
@@ -400,12 +410,13 @@ namespace WindowsFormsApplication1
 
 
         }
-        private void resetRWFlags(){
+        private void resetRWFlags()
+        {
             redFlag = 0;
             whiteFlag = 0;
 
         }
- 
+
 
 
 
@@ -443,7 +454,7 @@ namespace WindowsFormsApplication1
 
         private unsafe void fadeToBlack(byte* norm, int from)
         {
-            from -= ((whiteFlag+redFlag)*3);
+            from -= ((whiteFlag + redFlag) * 3);
 
             for (int i = 0; i < from; i++)
             {
@@ -464,7 +475,30 @@ namespace WindowsFormsApplication1
             }
             else return false;
         }
-   }
 
 
+
+
+
+
+        private void colorAnalizerForCpp_Click(object sender, EventArgs e)
+        {
+            string asd = null;
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+
+            stopCsharp.Start();
+            unsafe
+            {
+                byte* norm = (byte*)bitdata.Scan0.ToPointer();
+                for (int i = 0; i < Original.Length; i++)
+                {
+                    asd += (string)(norm[i]+"");
+                    asd += "\x0d\x0a";
+                    
+                }
+                System.IO.File.WriteAllText(@"lolCpp.txt", asd);
+            }
+        }
+
+    }
 }
