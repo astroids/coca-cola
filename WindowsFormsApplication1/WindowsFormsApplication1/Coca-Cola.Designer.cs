@@ -37,12 +37,13 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findC2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileBrowse = new System.Windows.Forms.OpenFileDialog();
             this.trackCPP = new System.Windows.Forms.TrackBar();
             this.trackASM = new System.Windows.Forms.TrackBar();
             this.labelCPP = new System.Windows.Forms.Label();
             this.labelASM = new System.Windows.Forms.Label();
-            this.findC2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rWFindCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCS)).BeginInit();
             this.menu.SuspendLayout();
@@ -112,14 +113,14 @@
             // openPict
             // 
             this.openPict.Name = "openPict";
-            this.openPict.Size = new System.Drawing.Size(103, 22);
+            this.openPict.Size = new System.Drawing.Size(152, 22);
             this.openPict.Text = "Op&en";
             this.openPict.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -127,7 +128,8 @@
             // 
             this.findToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.findCToolStripMenuItem,
-            this.findC2ToolStripMenuItem});
+            this.findC2ToolStripMenuItem,
+            this.rWFindCToolStripMenuItem});
             this.findToolStripMenuItem.Enabled = false;
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
             this.findToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
@@ -136,9 +138,16 @@
             // findCToolStripMenuItem
             // 
             this.findCToolStripMenuItem.Name = "findCToolStripMenuItem";
-            this.findCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.findCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.findCToolStripMenuItem.Text = "Find C#";
             this.findCToolStripMenuItem.Click += new System.EventHandler(this.findCToolStripMenuItem_Click);
+            // 
+            // findC2ToolStripMenuItem
+            // 
+            this.findC2ToolStripMenuItem.Name = "findC2ToolStripMenuItem";
+            this.findC2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findC2ToolStripMenuItem.Text = "C# MColor Analizer ";
+            this.findC2ToolStripMenuItem.Click += new System.EventHandler(this.findC2ToolStripMenuItem_Click_1);
             // 
             // fileBrowse
             // 
@@ -194,12 +203,12 @@
             this.labelASM.TabIndex = 8;
             this.labelASM.Text = "ASM average";
             // 
-            // findC2ToolStripMenuItem
+            // rWFindCToolStripMenuItem
             // 
-            this.findC2ToolStripMenuItem.Name = "findC2ToolStripMenuItem";
-            this.findC2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.findC2ToolStripMenuItem.Text = "C# MColor Analizer ";
-            this.findC2ToolStripMenuItem.Click += new System.EventHandler(this.findC2ToolStripMenuItem_Click_1);
+            this.rWFindCToolStripMenuItem.Name = "rWFindCToolStripMenuItem";
+            this.rWFindCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rWFindCToolStripMenuItem.Text = "RW Find C# ";
+            this.rWFindCToolStripMenuItem.Click += new System.EventHandler(this.rWFindCToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -245,6 +254,7 @@
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findC2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rWFindCToolStripMenuItem;
     }
 }
 

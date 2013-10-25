@@ -353,7 +353,7 @@ namespace WindowsFormsApplication1
         private void findC2ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             string asd = null;
-                         bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
 
             stopCsharp.Start();
             unsafe
@@ -369,6 +369,100 @@ namespace WindowsFormsApplication1
                 }
                 System.IO.File.WriteAllText(@"lol.txt", asd);
             }
+        }
+
+        private int redFlag=0;
+        private int whiteFlag=0;
+        private int paras = 0;
+        private void incRed()
+        {
+            redFlag++;
+        }
+
+        private void incWhite()
+        {
+            whiteFlag++;
+
+        }
+
+        private unsafe bool isItRed(byte* norm,int i)
+        {
+            if (norm[i] > 85)
+            {
+                if (norm[i - 2] < 30 && norm[i - 1] < 30)
+                {
+                    incRed();
+                    return true;
+                }
+                else return false;
+            }
+            else return false;
+
+
+        }
+        private void resetRWFlags(){
+            redFlag = 0;
+            whiteFlag = 0;
+
+        }
+ 
+
+
+
+        private void rWFindCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+
+            stopCsharp.Start();
+            unsafe
+            {
+                byte* norm = (byte*)bitdata.Scan0.ToPointer();
+                for (int i = 0; i < Original.Length; i++)
+                {
+                    if ((isItRed(norm, i) == false) && redFlag > 0)
+                    {
+                        if (!isItWhite(norm, i))
+                        {
+                            fadeToBlack(norm, i);
+                            resetRWFlags();
+
+                        }
+                        else resetRWFlags();
+                    }
+                    else resetRWFlags();
+
+                }
+            }
+            stopCsharp.Stop();
+            labelCS.Text = stopCsharp.ElapsedTicks.ToString();
+            stopCsharp.Reset();
+            pic.Image = bmpFront;
+
+            bmpFront.UnlockBits(bitdata);
+        }
+
+        private unsafe void fadeToBlack(byte* norm, int from)
+        {
+            from -= ((whiteFlag+redFlag)*3);
+
+            for (int i = 0; i < from; i++)
+            {
+                norm[from] = 0;
+            }
+        }
+
+        private unsafe bool isItWhite(byte* norm, int i)
+        {
+            if (norm[i] > 120)
+            {
+                if (norm[i - 2] < 120 && norm[i - 1] < 120)
+                {
+                    incWhite();
+                    return true;
+                }
+                else return false;
+            }
+            else return false;
         }
    }
 
