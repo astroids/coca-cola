@@ -498,6 +498,8 @@ namespace WindowsFormsApplication1
                 }
                 System.IO.File.WriteAllText(@"lolCpp.txt", asd);
             }
+            bmpFront.UnlockBits(bitdata);
+            MessageBox.Show("Finished");
         }
 
     }
