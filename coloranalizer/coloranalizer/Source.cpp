@@ -4,11 +4,13 @@
 #include <stdlib.h>
 #include <future>
 
-#define DEFRW
+//#define DEFRW
 #define DEFRW_P
 //#define DEFR
-//#define DEFR_P
-//#define FADE
+#define DEFR_P
+#define FADE
+
+
 std::vector<unsigned short> pic;
 std::ifstream f("lolcpp.txt");
 int redFlag = 0;
@@ -21,11 +23,12 @@ void fadeToBlack(int from);
 void RWAnalize();
 void incWhite();
 void incRed();
-bool isItRed(int i);
+bool isItRed();
 void resetRWFlags();
-bool isItWhite(int i);
+bool isItWhite();
 void print();
 void readFile();
+//////////////////////////////////   MAIN
 void main(){
 
 	readFile();
@@ -36,6 +39,7 @@ void main(){
 
 	system("pause");
 }
+
 void readFile(){
 	unsigned short temp;
 
@@ -79,7 +83,10 @@ void incPara(){
 		resetRWFlags();
 	}
 }
-
+void resetPara(){
+	paras = 0;
+	//resetRWFlags();
+}
 
 
 void resetRWFlags()
@@ -94,37 +101,41 @@ void resetRWFlags()
 }
 
 
-bool isItWhite(int i)
+bool isItWhite()
 {
-	if (pic[i] > 120)
+	if (pic[mainL] > 120)
 	{
-		if (pic[i - 2] < 120 && pic[i - 1] < 120)
+		if (pic[mainL - 2] < 120 && pic[mainL - 1] < 120)
 		{
 			incWhite();
-#ifdef DEFRW 
-			std::cout << pic[i - 2] << " " << pic[i - 1] << " " << pic[i] << " " << std::endl;
+#ifdef DEFRW_P 
+			std::cout << "white  "<< whiteFlag  <<" ----"<<pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << " " << std::endl;
 #endif
-#ifdef DEFRW_P
+#ifdef DEFRW
 			system("pause");
 #endif
-
+			//resetPara();
 			return true;
 		}
-		else return false;
+		else {
+			
+			return false;
+		}
 	}
 	else return false;
 }
 
 //////////////////////////////////		RED
-bool isItRed(int i)
+bool isItRed()
 {
-	if (pic[i] > 85)
+	if (pic[mainL] > 85)
 	{
-		if (pic[i - 2] < 30 && pic[i - 1] < 30)
+		if (pic[mainL - 2] < 30 && pic[mainL - 1] < 30)
 		{
 			incRed();
+			resetPara();
 #ifdef DEFR_P			
-			std::cout << pic[i - 2] << " " << pic[i - 1]<< " " << pic[i] <<" " << std::endl;
+			std::cout << "RED  " << redFlag << " ----" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << " " << std::endl;
 #endif
 
 #ifdef DEFR 	
@@ -135,7 +146,7 @@ bool isItRed(int i)
 			return true;
 		}
 		else {
-
+			
 			return false;
 		}
 	}
@@ -164,15 +175,21 @@ void fadeToBlack(int from)
 void RWAnalize()
 {
 
-	for (mainL = 0; mainL < pic.size(); mainL++)
+	for (mainL = 0; mainL < pic.size(); mainL+=3)
 	{
-		if ((isItRed(mainL) == false) && redFlag > 0)
+		if ((isItRed() == false) && redFlag > 0)
 		{
-			if (!isItWhite(mainL))
+			if (!isItWhite())
 			{
 				incPara();
 
+			}if (whiteFlag){
+				incWhite(); 
+				resetPara();
 			}
+		}if (redFlag){
+			incPara();
+			resetPara();
 		}
 
 	}
