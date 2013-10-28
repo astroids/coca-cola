@@ -5,9 +5,9 @@
 #include <future>
 
 //#define DEFRW
-#define DEFRW_P
+//#define DEFRW_P
 //#define DEFR
-#define DEFR_P
+//#define DEFR_P
 #define FADE
 
 
@@ -19,7 +19,7 @@ int paras = 0;
 size_t mainL;
 
 void incPara();
-void fadeToBlack(int from);
+void fadeToBlack();
 void RWAnalize();
 void incWhite();
 void incRed();
@@ -93,19 +93,19 @@ void resetRWFlags()
 {
 
 	if (whiteFlag > 3){
-		fadeToBlack(mainL);
+		fadeToBlack();
 	}
 	redFlag = 0;
 	whiteFlag = 0;
-
+	resetPara;
 }
 
 
 bool isItWhite()
 {
-	if (pic[mainL] > 120)
+	if (pic[mainL] > 111)
 	{
-		if (pic[mainL - 2] < 120 && pic[mainL - 1] < 120)
+		if (pic[mainL - 2] < 111 && pic[mainL - 1] < 111)
 		{
 			incWhite();
 #ifdef DEFRW_P 
@@ -156,20 +156,26 @@ bool isItRed()
 }
 
 
-void fadeToBlack(int from)
+void fadeToBlack()
 {
 #ifdef FADE
-	size_t to = from + ((whiteFlag + redFlag)*3);
-	std::cout << "fading-----------" << std::endl;
-	for (size_t i = from; i < to; i++)
+	size_t from = mainL - ((whiteFlag + redFlag)*3);
+//	std::cout << "fading-----------" << std::endl;
+	//if ((mainL - from)>200){
+	std::cout << mainL - from << std::endl;
+
+	system("pause");
+
+	for(size_t i = from; i < mainL; i++)
 	{
 		pic[i] = 0;
 		std::cout << pic[i] << " ";
 		if ((i % 3)==0)std::cout << "\n";
 
 	}
-	std::cout << "-----------------------------------------" << std::endl;
+//	std::cout << "-----------------------------------------" << std::endl;
 	resetRWFlags();
+
 #endif
 }
 void RWAnalize()
@@ -183,11 +189,10 @@ void RWAnalize()
 			{
 				incPara();
 
-			}if (whiteFlag>0){
+8			}if (whiteFlag>0){
 				incWhite(); 
 			}
-		}if (redFlag>0){
-			incPara();
+		
 			
 		}
 
