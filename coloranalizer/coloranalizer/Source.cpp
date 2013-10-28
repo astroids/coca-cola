@@ -36,7 +36,7 @@ void main(){
 	system("pause");
 
 	RWAnalize();
-
+	std::cout << "Fin" << std::endl;
 	system("pause");
 }
 
@@ -160,8 +160,8 @@ void fadeToBlack(int from)
 {
 #ifdef FADE
 	size_t to = from + ((whiteFlag + redFlag)*3);
-
-	for (int i = from; i < to; i++)
+	std::cout << "fading-----------" << std::endl;
+	for (size_t i = from; i < to; i++)
 	{
 		pic[i] = 0;
 		std::cout << pic[i] << " ";
@@ -183,13 +183,12 @@ void RWAnalize()
 			{
 				incPara();
 
-			}if (whiteFlag){
+			}if (whiteFlag>0){
 				incWhite(); 
-				resetPara();
 			}
-		}if (redFlag){
+		}if (redFlag>0){
 			incPara();
-			resetPara();
+			
 		}
 
 	}
