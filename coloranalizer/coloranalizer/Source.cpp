@@ -11,6 +11,14 @@
 #define FADE
 
 
+/*
+	her kirmizidan sonra parazit sifirlamayi kadir
+	parazit limitini her redden sonra arttir
+
+*/
+
+
+
 std::vector<unsigned short> pic;
 std::ifstream f("lolcpp.txt");
 int redFlag = 0;
@@ -186,6 +194,8 @@ void fadeToBlack()
 
 #endif
 }
+
+
 void RWAnalize()
 {
 	/// deneme amacli looppp geri duzelet           for (mainL = 2; mainL < pic.size() ; mainL+=3) offfff 2den basla
