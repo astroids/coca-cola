@@ -68,16 +68,19 @@ void print(){
 
 void incRed()
 {
+	
 	redFlag++;
+	std::cout << "yis RED "<< redFlag << std::endl;
 }
 void incWhite()
 {
 	whiteFlag++;
-
+	std::cout << "yis WHT " << whiteFlag << std::endl;
 }
 
 //////////////////////////////////		PARAS
 void incPara(){
+	std::cout << "yis parazit" << std::endl;
 	paras++;
 	if (paras > 3){
 		resetRWFlags();
@@ -85,12 +88,15 @@ void incPara(){
 }
 void resetPara(){
 	paras = 0;
+	std::cout << "parazit 0landi" << std::endl;
+
 	//resetRWFlags();
 }
 
 
 void resetRWFlags()
 {
+	std::cout << "hepsi sifirlandi" << std::endl;
 
 	if (whiteFlag > 3){
 		fadeToBlack();
@@ -103,6 +109,7 @@ void resetRWFlags()
 
 bool isItWhite()
 {
+	std::cout << "WHT?" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
 	if (pic[mainL] > 111)
 	{
 		if (pic[mainL - 2] < 111 && pic[mainL - 1] < 111)
@@ -128,9 +135,10 @@ bool isItWhite()
 //////////////////////////////////		RED
 bool isItRed()
 {
+	std::cout << "RED?" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
 	if (pic[mainL] > 85)
 	{
-		if (pic[mainL - 2] < 30 && pic[mainL - 1] < 30)
+		if (pic[mainL - 2] < 35 && pic[mainL - 1] < 35)
 		{
 			incRed();
 			resetPara();
@@ -180,8 +188,8 @@ void fadeToBlack()
 }
 void RWAnalize()
 {
-
-	for (mainL = 0; mainL < pic.size(); mainL+=3)
+	/// deneme amacli looppp geri duzelet           for (mainL = 2; mainL < pic.size() ; mainL+=3) offfff 2den basla
+	for (mainL = 2; mainL < 500; mainL+=3)
 	{
 		if ((isItRed() == false) && redFlag > 0)
 		{
@@ -189,7 +197,7 @@ void RWAnalize()
 			{
 				incPara();
 
-8			}if (whiteFlag>0){
+			}if (whiteFlag>0){
 				incWhite(); 
 			}
 		
