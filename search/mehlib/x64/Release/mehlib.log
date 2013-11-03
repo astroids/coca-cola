@@ -1,26 +1,118 @@
-﻿Build started 30/10/2013 23:33:13.
+﻿Build started 04/11/2013 01:44:19.
      1>Project "G:\Engi\Git\coca-cola\search\mehlib\mehlib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MEHLIB_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release\mehlib.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt mehlib.cpp
          mehlib.cpp
-     1>mehlib.cpp(112): error C2732: linkage specification contradicts earlier specification for 'incRed'
-                 mehlib.cpp(111) : see declaration of 'incRed'
-     1>mehlib.cpp(116): error C2732: linkage specification contradicts earlier specification for 'incWhite'
-                 mehlib.cpp(115) : see declaration of 'incWhite'
-     1>mehlib.cpp(120): error C2732: linkage specification contradicts earlier specification for 'incPara'
-                 mehlib.cpp(120) : see declaration of 'incPara'
-     1>mehlib.cpp(131): error C2732: linkage specification contradicts earlier specification for 'resetRWFlags'
-                 mehlib.cpp(130) : see declaration of 'resetRWFlags'
-     1>mehlib.cpp(138): warning C4551: function call missing argument list
-     1>mehlib.cpp(141): error C2732: linkage specification contradicts earlier specification for 'isItWhite'
-                 mehlib.cpp(140) : see declaration of 'isItWhite'
-     1>mehlib.cpp(166): error C2732: linkage specification contradicts earlier specification for 'isItRed'
-                 mehlib.cpp(165) : see declaration of 'isItRed'
-     1>mehlib.cpp(195): error C2732: linkage specification contradicts earlier specification for 'fadeToBlack'
-                 mehlib.cpp(194) : see declaration of 'fadeToBlack'
-     1>mehlib.cpp(217): fatal error C1075: end of file found before the left brace '{' at 'mehlib.cpp(105)' was matched
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\initializer_list(15): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\initializer_list(59): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\initializer_list(66): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(15): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(20): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(32): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(51): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(57): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(64): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(70): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(77): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(85): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(93): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(99): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(106): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(112): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(118): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(124): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(131): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(137): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(143): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(149): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(156): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(164): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(170): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(176): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(182): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(188): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(195): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(202): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(208): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(214): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(220): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(226): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(232): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(253): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(259): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(267): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(274): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(280): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(286): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(292): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(299): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(305): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(313): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(319): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(325): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(332): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(340): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(348): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(356): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(364): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(379): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xtr1common(419): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(90): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(100): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(108): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(115): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(123): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(132): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(143): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(154): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(165): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(176): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(187): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(198): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(201): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(213): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(216): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(228): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(231): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(243): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(246): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(258): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(261): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(311): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(322): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(330): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(336): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(342): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(348): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(369): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(376): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(382): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(388): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(394): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(400): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(406): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(412): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(418): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(424): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(438): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(452): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\xstddef(466): error C2894: templates cannot be declared to have 'C' linkage
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(471): error C2526: 'std::exception_ptr::_Current_exception' : C linkage function cannot return C++ class 'std::exception_ptr'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(428) : see declaration of 'std::exception_ptr'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(477): error C2526: 'std::exception_ptr::_Copy_exception' : C linkage function cannot return C++ class 'std::exception_ptr'
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(428) : see declaration of 'std::exception_ptr'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(474): error C2562: 'std::exception_ptr::_Current_exception' : 'void' function returning a value
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(470) : see declaration of 'std::exception_ptr::_Current_exception'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(482): error C2562: 'std::exception_ptr::_Copy_exception' : 'void' function returning a value
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(476) : see declaration of 'std::exception_ptr::_Copy_exception'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(485): error C2562: 'std::exception_ptr::_Copy_exception' : 'void' function returning a value
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(476) : see declaration of 'std::exception_ptr::_Copy_exception'
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(502): error C2733: 'std::operator ==' : second C linkage of overloaded function not allowed
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(497) : see declaration of 'std::operator =='
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(507): error C2733: 'std::operator ==' : second C linkage of overloaded function not allowed
+     1>C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\exception(507): fatal error C1003: error count exceeds 100; stopping compilation
      1>Done Building Project "G:\Engi\Git\coca-cola\search\mehlib\mehlib.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:01.32
+Time Elapsed 00:00:01.18

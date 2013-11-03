@@ -14,15 +14,3 @@ extern "C" {
 extern "C"{
 	MEHLIB_API void  searchrw(unsigned char*  a, short bar, INT32 size, unsigned char* orig);
 
-}
-/*
-extern void incPara();
-extern void fadeToBlack();
-extern void RWAnalize();
-extern void incWhite();
-extern void incRed();
-extern bool isItRed();
-extern void resetRWFlags();
-extern bool isItWhite();
-extern void RWAnalize();
-*/

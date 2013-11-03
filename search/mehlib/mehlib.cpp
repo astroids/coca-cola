@@ -69,148 +69,22 @@ extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm, short bar, I
 	}
 }}
 
-extern void incPara();
-extern void fadeToBlack();
-extern void RWAnalize();
-extern void incWhite();
-extern void incRed();
-extern bool isItRed();
-extern void resetRWFlags();
-extern bool isItWhite();
-extern void RWAnalize();
-
-
-void RWAnalize()
-{
-
-	for (mainL = 0; mainL < pic.size(); mainL += 3)
-	{
-		if ((isItRed() == false) && redFlag > 0)
-		{
-			if (!isItWhite())
-			{
-				incPara();
-
-			}if (whiteFlag > 0){
-				incWhite();
-			}
-
-
-		}
-	}
-}
+//extern void incPara();
+//extern void fadeToBlack();
+//extern void RWAnalize();
+//extern void incWhite();
+//extern void incRed();
+//extern bool isItRed();
+//extern void resetRWFlags();
+//extern bool isItWhite();
+//extern void RWAnalize();
+//
 
 
 
 extern "C" { MEHLIB_API void searchrw(unsigned char*  a, short bar, INT32 size, unsigned char* orig) {
 
-	RWAnalize();
+	//RWAnalize();
 
 }
-
-void incRed()
-{
-	redFlag++;
 }
-void incWhite()
-{
-	whiteFlag++;
-
-}
-void incPara(){
-	paras++;
-	if (paras > 3){
-		resetRWFlags();
-	}
-}
-void resetPara(){
-	paras = 0;
-	//resetRWFlags();
-}
-void resetRWFlags()
-{
-
-	if (whiteFlag > 3){
-		fadeToBlack();
-	}
-	redFlag = 0;
-	whiteFlag = 0;
-	resetPara;
-}
-bool isItWhite()
-{
-	if (pic[mainL] > 111)
-	{
-		if (pic[mainL - 2] < 111 && pic[mainL - 1] < 111)
-		{
-			incWhite();
-#ifdef DEFRW_P 
-			std::cout << "white  " << whiteFlag << " ----" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << " " << std::endl;
-#endif
-#ifdef DEFRW
-			system("pause");
-#endif
-			//resetPara();
-			return true;
-		}
-		else {
-
-			return false;
-		}
-	}
-	else return false;
-}
-
-//////////////////////////////////		RED
-bool isItRed()
-{
-	if (pic[mainL] > 85)
-	{
-		if (pic[mainL - 2] < 30 && pic[mainL - 1] < 30)
-		{
-			incRed();
-			resetPara();
-#ifdef DEFR_P			
-			std::cout << "RED  " << redFlag << " ----" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << " " << std::endl;
-#endif
-
-#ifdef DEFR 	
-
-			system("pause");
-#endif
-
-			return true;
-		}
-		else {
-
-			return false;
-		}
-	}
-	else return false;
-
-
-}
-
-void fadeToBlack()
-{
-#ifdef FADE
-	size_t from = mainL - ((whiteFlag + redFlag) * 3);
-	//	std::cout << "fading-----------" << std::endl;
-	//if ((mainL - from)>200){
-	std::cout << mainL - from << std::endl;
-
-	system("pause");
-
-	for (size_t i = from; i < mainL; i++)
-	{
-		pic[i] = 0;
-		std::cout << pic[i] << " ";
-		if ((i % 3) == 0)std::cout << "\n";
-
-	}
-	//	std::cout << "-----------------------------------------" << std::endl;
-	resetRWFlags();
-
-#endif
-}
-
