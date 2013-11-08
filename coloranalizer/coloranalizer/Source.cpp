@@ -18,7 +18,7 @@
 */
 
 
-
+size_t picsize = 0;
 std::vector<unsigned short> pic;
 std::ifstream f("lolcpp.txt");
 int redFlag = 0;
@@ -40,9 +40,11 @@ void readFile();
 void main(){
 
 	readFile();
-	print();
+	//print();
+	std::cout << pic.size() << std::endl;
+	picsize = pic.size();
 	system("pause");
-
+	
 	RWAnalize();
 	std::cout << "Fin" << std::endl;
 	system("pause");
@@ -90,7 +92,7 @@ void incWhite()
 void incPara(){
 	std::cout << "yis parazit" << std::endl;
 	paras++;
-	if (paras > 3){
+	if (paras > (redFlag/5)){
 		resetRWFlags();
 	}
 }
@@ -106,12 +108,12 @@ void resetRWFlags()
 {
 	std::cout << "hepsi sifirlandi" << std::endl;
 
-	if (whiteFlag > 3){
+	if ((whiteFlag/3) >paras){
 		fadeToBlack();
 	}
 	redFlag = 0;
 	whiteFlag = 0;
-	resetPara;
+	resetPara();
 }
 
 
@@ -144,7 +146,7 @@ bool isItWhite()
 bool isItRed()
 {
 	std::cout << "RED?" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
-	if (pic[mainL] > 85)
+	if (pic[mainL] > 79)
 	{
 		if (pic[mainL - 2] < 35 && pic[mainL - 1] < 35)
 		{
@@ -180,7 +182,7 @@ void fadeToBlack()
 	//if ((mainL - from)>200){
 	std::cout << mainL - from << std::endl;
 
-	system("pause");
+	//system("pause");
 
 	for(size_t i = from; i < mainL; i++)
 	{
@@ -190,7 +192,7 @@ void fadeToBlack()
 
 	}
 //	std::cout << "-----------------------------------------" << std::endl;
-	resetRWFlags();
+	
 
 #endif
 }
@@ -199,8 +201,9 @@ void fadeToBlack()
 void RWAnalize()
 {
 	/// deneme amacli looppp geri duzelet           for (mainL = 2; mainL < pic.size() ; mainL+=3) offfff 2den basla
-	for (mainL = 2; mainL < 500; mainL+=3)
+	for (mainL = 2; mainL < 1000; mainL+=3)
 	{
+		//std::cout << mainL << std::endl;
 		if ((isItRed() == false) && redFlag > 0)
 		{
 			if (!isItWhite())

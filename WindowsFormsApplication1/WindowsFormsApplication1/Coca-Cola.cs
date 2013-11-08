@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-//using System.Drawing;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -397,7 +397,7 @@ namespace WindowsFormsApplication1
 
         private unsafe bool isItRed(byte* norm, int i)
         {
-            if (norm[i] > 85)
+            if (norm[i] > 79)
             {
                 if (norm[i - 2] < 30 && norm[i - 1] < 30)
                 {
