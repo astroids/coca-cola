@@ -21,8 +21,8 @@
 size_t picsize = 0;
 std::vector<unsigned short> pic;
 std::ifstream f("lolcpp.txt");
-int redFlag = 0;
-int whiteFlag = 0;
+int red1 = 0;
+int white1 = 0;
 int paras = 0;
 size_t mainL;
 
@@ -76,23 +76,18 @@ void print(){
 }
 
 
-void incRed()
-{
-	
-	redFlag++;
-	std::cout << "yis RED "<< redFlag << std::endl;
-}
+
 void incWhite()
 {
-	whiteFlag++;
-	std::cout << "yis WHT " << whiteFlag << std::endl;
+	white1++;
+	std::cout << "yis WHT " << white1 << std::endl;
 }
 
 //////////////////////////////////		PARAS
 void incPara(){
 	std::cout << "yis parazit" << std::endl;
 	paras++;
-	if (paras > (redFlag/5)){
+	if (paras > (red1/5)){
 		resetRWFlags();
 	}
 }
@@ -108,41 +103,18 @@ void resetRWFlags()
 {
 	std::cout << "hepsi sifirlandi" << std::endl;
 
-	if ((whiteFlag/3) >paras){
+	if ((white1/3) >paras){
 		fadeToBlack();
 	}
-	redFlag = 0;
-	whiteFlag = 0;
+	red1 = 0;
+	white1 = 0;
 	resetPara();
 }
 
 
-bool isItWhite()
-{
-	std::cout << "WHT?" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
-	if (pic[mainL] > 111)
-	{
-		if (pic[mainL - 2] < 111 && pic[mainL - 1] < 111)
-		{
-			incWhite();
-#ifdef DEFRW_P 
-			std::cout << "white  "<< whiteFlag  <<" ----"<<pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << " " << std::endl;
-#endif
-#ifdef DEFRW
-			system("pause");
-#endif
-			//resetPara();
-			return true;
-		}
-		else {
-			
-			return false;
-		}
-	}
-	else return false;
-}
 
-//////////////////////////////////		RED
+
+//////////////////////////////////		RED1111111111
 bool isItRed()
 {
 	std::cout << "RED?" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
@@ -153,7 +125,7 @@ bool isItRed()
 			incRed();
 			resetPara();
 #ifdef DEFR_P			
-			std::cout << "RED  " << redFlag << " ----" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << " " << std::endl;
+			std::cout << "RED  " << red1 << " ----" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << " " << std::endl;
 #endif
 
 #ifdef DEFR 	
@@ -172,12 +144,48 @@ bool isItRed()
 
 
 }
+void incRed()
+{
+
+	red1++;
+	std::cout << "yis RED " << red1 << std::endl;
+}
 
 
+///////////////////////////  STATE RED  WHITE
+
+bool isItWhite()
+{
+	std::cout << "WHT?" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
+	if (pic[mainL] > 111)
+	{
+		if (pic[mainL - 2] < 111 && pic[mainL - 1] < 111)
+		{
+			incWhite();
+#ifdef DEFRW_P 
+			std::cout << "white  " << white1 << " ----" << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << " " << std::endl;
+#endif
+#ifdef DEFRW
+			system("pause");
+#endif
+			//resetPara();
+			return true;
+		}
+		else {
+
+			return false;
+		}
+	}
+	else return false;
+}
+//////////////////////////
+
+
+//////////////////////////		DEBUGGER
 void fadeToBlack()
 {
 #ifdef FADE
-	size_t from = mainL - ((whiteFlag + redFlag)*3);
+	size_t from = mainL - ((white1 + red1)*3);
 //	std::cout << "fading-----------" << std::endl;
 	//if ((mainL - from)>200){
 	std::cout << mainL - from << std::endl;
@@ -196,6 +204,8 @@ void fadeToBlack()
 
 #endif
 }
+//////////////////////////		DEBUGGER
+
 
 
 void RWAnalize()
@@ -204,13 +214,13 @@ void RWAnalize()
 	for (mainL = 2; mainL < 1000; mainL+=3)
 	{
 		//std::cout << mainL << std::endl;
-		if ((isItRed() == false) && redFlag > 0)
+		if ((isItRed() == false) && red1 > 0)
 		{
 			if (!isItWhite())
 			{
 				incPara();
 
-			}if (whiteFlag>0){
+			}if (white1>0){
 				incWhite(); 
 			}
 		

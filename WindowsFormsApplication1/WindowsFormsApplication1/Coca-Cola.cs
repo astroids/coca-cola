@@ -399,7 +399,7 @@ namespace WindowsFormsApplication1
         {
             if (norm[i] > 79)
             {
-                if (norm[i - 2] < 30 && norm[i - 1] < 30)
+                if (norm[i - 2] < 41 && norm[i - 1] < 41)
                 {
                     incRed();
                     return true;
