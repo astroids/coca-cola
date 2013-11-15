@@ -501,26 +501,7 @@ namespace WindowsFormsApplication1
             bmpFront.UnlockBits(bitdata);
             MessageBox.Show("Finished");
         }
-        private void colorAnalizerForCpp_Click(object sender, EventArgs e)
-        {
-            string asd = null;
-            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
-
-            stopCsharp.Start();
-            unsafe
-            {
-                byte* norm = (byte*)bitdata.Scan0.ToPointer();
-                for (int i = 0; i < Original.Length; i++)
-                {
-                    asd += (string)(norm[i] + "");
-                    asd += "\x0d\x0a";// new line
-
-                }
-                System.IO.File.WriteAllText(@"lolCpp.txt", asd);
-            }
-            bmpFront.UnlockBits(bitdata);
-            MessageBox.Show("Finished");
-        }
+      
 
     }
 }
