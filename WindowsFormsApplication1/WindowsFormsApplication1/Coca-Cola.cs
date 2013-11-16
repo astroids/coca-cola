@@ -504,118 +504,115 @@ namespace WindowsFormsApplication1
       
 
     }
-    void stateRWRW();
-void incPara();
-void fadeToBlack();
-void resetRWFlags();
-void print();
+//    void stateRWRW();
+//void incPara();
+//void fadeToBlack();
+//void resetRWFlags();
+//void print();
 
 
-size_t firstPhase;
-size_t picsize = 0;
-std::vector<unsigned short> pic;
-std::ifstream f("lolcpp.txt");
-int red1 = 0;
-int red2 = 0;
-int white1 = 0;
-int white2 = 0;
-int paras = 0;
-size_t mainL;									/* bu sayi parametre  olarak gelmesi lzmmmm !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-/* dll yazarken async calismazsa buraya baaakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk*/
-
-
-
-
-//////////////////////////////////   MAIN
-void main(){
-
-	readFile();
-	//print();
-	std::cout << pic.size() << std::endl;
-	picsize = pic.size();
-	system("pause");
-
-	mainL = 2;
-	STATE0();
-	std::cout << "Fin" << std::endl;
-	system("pause");
-}
-
-void readFile(){
-	unsigned short temp;
-
-	if (f){
-		while (f.good())
-		{
-			f >> temp;
-			pic.push_back(temp);
-		}
-	}
-
-}
-void print(){
-	for (size_t i = 0; i < pic.size(); i++)
-	{
-		std::cout << pic[i] << " ";
-		if ((i % 3) == 0){
-			std::cout << "-- ";
-		}if (i % 12 == 0){
-			std::cout << std::endl;
-		}
-	}
-
-}
+//size_t firstPhase;
+//size_t picsize = 0;
+//std::vector<unsigned short> pic;
+//std::ifstream f("lolcpp.txt");
+//int red1 = 0;
+//int red2 = 0;
+//int white1 = 0;
+//int white2 = 0;
+//int paras = 0;
+//size_t mainL;									/* bu sayi parametre  olarak gelmesi lzmmmm !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+///* dll yazarken async calismazsa buraya baaakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk*/
 
 
 
 
-//////////////////////////		DEBUGGER
-void fadeToBlack()
-{
-#ifdef FADE
-	size_t from = mainL - ((white1 + red1) * 3);
-	//	std::cout << "fading-----------" << std::endl;
-	//if ((mainL - from)>200){
-	std::cout << mainL - from << std::endl;
+////////////////////////////////////   MAIN
+//void main(){
 
-	//system("pause");
+//    readFile();
+//    //print();
+//    std::cout << pic.size() << std::endl;
+//    picsize = pic.size();
+//    system("pause");
 
-	for (size_t i = from; i < mainL; i++)
-	{
-		pic[i] = 0;
-		std::cout << pic[i] << " ";
-		if ((i % 3) == 0)std::cout << "\n";
+//    mainL = 2;
+//    STATE0();
+//    std::cout << "Fin" << std::endl;
+//    system("pause");
+//}
 
-	}
-	//	std::cout << "-----------------------------------------" << std::endl;
+//void readFile(){
+//    unsigned short temp;
 
+//    if (f){
+//        while (f.good())
+//        {
+//            f >> temp;
+//            pic.push_back(temp);
+//        }
+//    }
 
-#endif
-}
-//////////////////////////		DEBUGGER
+//}
+//void print(){
+//    for (size_t i = 0; i < pic.size(); i++)
+//    {
+//        std::cout << pic[i] << " ";
+//        if ((i % 3) == 0){
+//            std::cout << "-- ";
+//        }if (i % 12 == 0){
+//            std::cout << std::endl;
+//        }
+//    }
 
-
-//////////////////////////////////////					STATE 0000000000000000000000000000000000
-void STATE0()
-{
-	/// kirmizimi testi       for (mainL = 2; mainL < pic.size() ; mainL+=3) offfff 2den basla
-	for (mainL; mainL < 1000; mainL += 3)
-	{
-		if (pic[mainL] > RTr)
-		{
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg)
-			{
-				stateR();
-
-			}
-
-		}
-	}
-
-}
+//}
 
 
 
+
+////////////////////////////		DEBUGGER
+//void fadeToBlack()
+//{
+//#ifdef FADE
+//    size_t from = mainL - ((white1 + red1) * 3);
+//    //	std::cout << "fading-----------" << std::endl;
+//    //if ((mainL - from)>200){
+//    std::cout << mainL - from << std::endl;
+
+//    //system("pause");
+
+//    for (size_t i = from; i < mainL; i++)
+//    {
+//        pic[i] = 0;
+//        std::cout << pic[i] << " ";
+//        if ((i % 3) == 0)std::cout << "\n";
+
+//    }
+//    //	std::cout << "-----------------------------------------" << std::endl;
+
+
+//#endif
+//}
+////////////////////////////		DEBUGGER
+
+
+////////////////////////////////////////					STATE 0000000000000000000000000000000000
+//void STATE0()
+//{
+//    /// kirmizimi testi       for (mainL = 2; mainL < pic.size() ; mainL+=3) offfff 2den basla
+//    for (mainL; mainL < 1000; mainL += 3)
+//    {
+//        if (pic[mainL] > RTr)
+//        {
+//            if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg)
+//            {
+//                stateR();
+
+//            }
+
+//        }
+//    }
+
+//}
 
 
 
@@ -625,150 +622,153 @@ void STATE0()
 
 
 
-////////////////////////////////////					STATE 1111111111111111111111111111111111111  burada firstphase gereksiz olabilir
-bool stateR() {
-	firstPhase = mainL + 30;
-	for (mainL; mainL < firstPhase; mainL += 3)
-	{
-		//ilk 10 pixel kirmizi değilse direk don				
-		if (pic[mainL] < RTr)
-		{
-			return false;
-
-		}if ((pic[mainL - 2]) > RTb && (pic[mainL - 1]) > RTg)
-		{
-			return false;
-		}
-	}
-	red1 = 11;
-
-
-	/// artik kirmizimi deilse beyazmı
-	for (mainL; mainL < LIMI; mainL += 3)
-	{
-		if (pic[mainL] > RTr) {
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
-				red1++;
-			}
-			else if (pic[mainL] > Wrbg){
-				if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg){
-					stateRW();
-				}
-			}
-			else {
-				paras++;							////////////      kirmizi paraziti bu değeri ince ayarla
-				if (paras * 3 > red1){
-					return false;
-				}
-
-			}
-
-		}
 
 
 
-	}
+//////////////////////////////////////					STATE 1111111111111111111111111111111111111  burada firstphase gereksiz olabilir
+//bool stateR() {
+//    firstPhase = mainL + 30;
+//    for (mainL; mainL < firstPhase; mainL += 3)
+//    {
+//        //ilk 10 pixel kirmizi değilse direk don				
+//        if (pic[mainL] < RTr)
+//        {
+//            return false;
+
+//        }if ((pic[mainL - 2]) > RTb && (pic[mainL - 1]) > RTg)
+//        {
+//            return false;
+//        }
+//    }
+//    red1 = 11;
+
+
+//    /// artik kirmizimi deilse beyazmı
+//    for (mainL; mainL < LIMI; mainL += 3)
+//    {
+//        if (pic[mainL] > RTr) {
+//            if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+//                red1++;
+//            }
+//            else if (pic[mainL] > Wrbg){
+//                if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg){
+//                    stateRW();
+//                }
+//            }
+//            else {
+//                paras++;							////////////      kirmizi paraziti bu değeri ince ayarla
+//                if (paras * 3 > red1){
+//                    return false;
+//                }
+
+//            }
+
+//        }
 
 
 
-}
+//    }
 
 
-//////////////////////////////////  buradan sadece state 0 a donus var 
-void stateRW(){
-	paras = 0;						////////// burada geleck parazit degeri hesaplanabilir ama algoritmayi cok yavaslatabilir
-	white1 = 1;
 
-	//ilk 10 pixel
-	firstPhase = mainL + 30;
-	for (mainL; mainL < firstPhase; mainL += 3) {
-		if ((pic[mainL] < Wrbg)){
-			STATE0();
-		}
-		if ((pic[mainL - 2]) < Wrbg && (pic[mainL - 1] < Wrbg)) {
-			STATE0();
-		}
-	}
-	white1 += 10;
-
-	for (mainL; mainL < LIMI; mainL += 3){
-		if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
-			if (pic[mainL]>RTr){
-				stateRWR();
-			}
-		}
-
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
-				white1++;
-			}
-		}
-		else
-		{
-			paras++;
-			if (paras * 3 > white1){
-				STATE0();
-			}
-		}
+//}
 
 
-	}
-}
+////////////////////////////////////  buradan sadece state 0 a donus var 
+//void stateRW(){
+//    paras = 0;						////////// burada geleck parazit degeri hesaplanabilir ama algoritmayi cok yavaslatabilir
+//    white1 = 1;
+
+//    //ilk 10 pixel
+//    firstPhase = mainL + 30;
+//    for (mainL; mainL < firstPhase; mainL += 3) {
+//        if ((pic[mainL] < Wrbg)){
+//            STATE0();
+//        }
+//        if ((pic[mainL - 2]) < Wrbg && (pic[mainL - 1] < Wrbg)) {
+//            STATE0();
+//        }
+//    }
+//    white1 += 10;
+
+//    for (mainL; mainL < LIMI; mainL += 3){
+//        if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+//            if (pic[mainL]>RTr){
+//                stateRWR();
+//            }
+//        }
+
+//        if (pic[mainL] > Wrbg){
+//            if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+//                white1++;
+//            }
+//        }
+//        else
+//        {
+//            paras++;
+//            if (paras * 3 > white1){
+//                STATE0();
+//            }
+//        }
 
 
-////////////////////////////////////////////					hic paraziti umursamiyor????????????
-void stateRWR(){
-	paras = 1;
-	red2 = 0;
-	firstPhase = mainL + (white1 * 3);
-	for (mainL; mainL < firstPhase; mainL += 3)									///bu *3 ten eksik olabilir
-	{
+//    }
+//}
+
+
+//////////////////////////////////////////////					hic paraziti umursamiyor????????????
+//void stateRWR(){
+//    paras = 1;
+//    red2 = 0;
+//    firstPhase = mainL + (white1 * 3);
+//    for (mainL; mainL < firstPhase; mainL += 3)									///bu *3 ten eksik olabilir
+//    {
 			
-		if (pic[mainL] < RTr)
-		{
-			STATE0();
+//        if (pic[mainL] < RTr)
+//        {
+//            STATE0();
 
-		}if ((pic[mainL - 2]) > RTb && (pic[mainL - 1] > RTg))
-		{
-			STATE0();
-		}
-	}
-	red2 = red1 + 1;																		//yukariyi degistirirsen burayida degistir
+//        }if ((pic[mainL - 2]) > RTb && (pic[mainL - 1] > RTg))
+//        {
+//            STATE0();
+//        }
+//    }
+//    red2 = red1 + 1;																		//yukariyi degistirirsen burayida degistir
 
-	std::cout << "RWR ye kadar dogru galiba" << std::endl;
-	//system("pause");
-	mainL += ((red2 / 4) * 3);							//burayi napcaz bilmiyom
-	stateRWRW();
-
-
+//    std::cout << "RWR ye kadar dogru galiba" << std::endl;
+//    //system("pause");
+//    mainL += ((red2 / 4) * 3);							//burayi napcaz bilmiyom
+//    stateRWRW();
 
 
 
 
-}
 
 
-void stateRWRW(){
-	firstPhase = mainL + (white1 * 3);
-	paras = (white1 / 3) + 1;
-	for (mainL; mainL < white1; mainL+=3)
-	{
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
-				white2++;
-			}
-			else
-			{
-				paras--;
-				if (paras == 0){
-					STATE0();
-				}
-			}
-		}
-	}
-	system("pause");
-	std::cout << "STATE RWRW YUPP" << std::endl;
+//}
 
 
-}
+//void stateRWRW(){
+//    firstPhase = mainL + (white1 * 3);
+//    paras = (white1 / 3) + 1;
+//    for (mainL; mainL < white1; mainL+=3)
+//    {
+//        if (pic[mainL] > Wrbg){
+//            if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+//                white2++;
+//            }
+//            else
+//            {
+//                paras--;
+//                if (paras == 0){
+//                    STATE0();
+//                }
+//            }
+//        }
+//    }
+//    system("pause");
+//    std::cout << "STATE RWRW YUPP" << std::endl;
+
+
+//}
 }

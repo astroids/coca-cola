@@ -9,12 +9,12 @@
 //#define DEFR
 //#define DEFR_P
 #define FADE
-#define LIMI 1000
-#define RTr 79
-#define RTb 35
-#define RTg 35
+#define LIMI 1500
+#define RTr 85
+#define RTb 50
+#define RTg 50
 
-#define Wrbg 111
+#define Wrbg 100
 
 
 /*
@@ -30,6 +30,10 @@ void readFile();
 bool stateR();
 void stateRW();
 void stateRWR();
+void stateRWRW();
+void jumpC();
+void jumpC2();
+
 void incPara();
 void fadeToBlack();
 void resetRWFlags();
@@ -43,6 +47,11 @@ std::ifstream f("lolcpp.txt");
 int red1 = 0;
 int red2 = 0;
 int white1 = 0;
+int white2 = 0;
+int Cwhite = 0;
+int C2red = 0;
+int STARTPOINT;
+
 int paras = 0;
 size_t mainL;									/* bu sayi parametre  olarak gelmesi lzmmmm !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 /* dll yazarken async calismazsa buraya baaakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk*/
@@ -57,11 +66,15 @@ void main(){
 	//print();
 	std::cout << pic.size() << std::endl;
 	picsize = pic.size();
-	system("pause");
+	//system("pause");
+	if (picsize == 0) {
+		std::cout << "file not found" << std::endl;
+		system("pause");
 
+	}
 	mainL = 2;
 	STATE0();
-	std::cout << "Fin" << std::endl;
+	std::cout << "Fin" << mainL / 3 << std::endl;
 	system("pause");
 }
 
@@ -123,7 +136,7 @@ void fadeToBlack()
 void STATE0()
 {
 	/// kirmizimi testi       for (mainL = 2; mainL < pic.size() ; mainL+=3) offfff 2den basla
-	for (mainL; mainL < 1000; mainL += 3)
+	for (mainL; mainL < LIMI; mainL += 3)
 	{
 		if (pic[mainL] > RTr)
 		{
@@ -151,19 +164,32 @@ void STATE0()
 
 ////////////////////////////////////					STATE 1111111111111111111111111111111111111  burada firstphase gereksiz olabilir
 bool stateR() {
+	red1 = 1;
+	paras = 0;
+	std::cout << "stateR" << mainL / 3 << std::endl;
 	firstPhase = mainL + 30;
 	for (mainL; mainL < firstPhase; mainL += 3)
 	{
 		//ilk 10 pixel kirmizi değilse direk don				
-		if (pic[mainL] < RTr)
+		if (pic[mainL] > RTr)
 		{
-			return false;
+			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg)
+			{
+				red1++;
 
-		}if ((pic[mainL - 2]) > RTb && (pic[mainL - 1]) > RTg)
-		{
-			return false;
+			}
+			else
+			{
+				paras++;
+			}
 		}
 	}
+	if (red1 < paras)
+	{
+		return false;
+	}
+
+
 	red1 = 11;
 
 
@@ -177,6 +203,7 @@ bool stateR() {
 			else if (pic[mainL] > Wrbg){
 				if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg){
 					stateRW();
+					break;
 				}
 			}
 			else {
@@ -200,6 +227,8 @@ bool stateR() {
 
 //////////////////////////////////  buradan sadece state 0 a donus var 
 void stateRW(){
+	std::cout << "stateRW" << mainL / 3 << " red1  " << red1 << std::endl;
+
 	paras = 0;						////////// burada geleck parazit degeri hesaplanabilir ama algoritmayi cok yavaslatabilir
 	white1 = 1;
 
@@ -208,9 +237,11 @@ void stateRW(){
 	for (mainL; mainL < firstPhase; mainL += 3) {
 		if ((pic[mainL] < Wrbg)){
 			STATE0();
+			break;
 		}
 		if ((pic[mainL - 2]) < Wrbg && (pic[mainL - 1] < Wrbg)) {
 			STATE0();
+			break;
 		}
 	}
 	white1 += 10;
@@ -219,6 +250,7 @@ void stateRW(){
 		if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
 			if (pic[mainL]>RTr){
 				stateRWR();
+				break;
 			}
 		}
 
@@ -232,6 +264,7 @@ void stateRW(){
 			paras++;
 			if (paras * 3 > white1){
 				STATE0();
+				break;
 			}
 		}
 
@@ -239,28 +272,128 @@ void stateRW(){
 	}
 }
 
+
+////////////////////////////////////////////					hic paraziti umursamiyor????????????
 void stateRWR(){
+	std::cout << "stateRWR" << mainL / 3 << "  white1  " << white1 << std::endl;
 	paras = 0;
 	red2 = 1;
-	firstPhase = mainL + (white1 * 3);
+	firstPhase = mainL + (white1 * 3) - 3;
 	for (mainL; mainL < firstPhase; mainL += 3)									///bu *3 ten eksik olabilir
 	{
-		//ilk 10 pixel kirmizi değilse direk don				
+
 		if (pic[mainL] < RTr)
 		{
 			STATE0();
-
+			break;
 		}if ((pic[mainL - 2]) > RTb && (pic[mainL - 1] > RTg))
 		{
 			STATE0();
+			break;
 		}
+		red2++;
 	}
-	red2 = red1 + 1;																		//yukariyi degistirirsen burayida degistir
+	red2 = white1 + 1;																		//yukariyi degistirirsen burayida degistir
 
 	std::cout << "RWR ye kadar dogru galiba" << std::endl;
-	system("pause");
+	//system("pause");
+	mainL += ((red2 / 4) * 3);							//burayi napcaz bilmiyom
+	stateRWRW();
 
 
 
+
+
+
+}
+
+
+void stateRWRW(){
+	std::cout << "stateRWRW" << mainL / 3 << " red2 " << red2 << std::endl;
+	white2 = 0;
+	firstPhase = mainL + (white1 * 3);
+	paras = (white1 / 3);
+	for (mainL; mainL < firstPhase; mainL += 3)
+	{
+		std::cout << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
+
+		if (pic[mainL] > Wrbg){
+			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+				white2++;
+			}
+			else
+			{
+				//std::cout << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
+				paras--;
+				if (paras == 0){
+					STATE0();
+					break;
+				}
+			}
+		}
+	}
+	//system("pause");
+	std::cout << "STATE RWRW YUPP" << std::endl;
+	jumpC();
+
+}
+
+
+
+
+
+
+
+void jumpC(){
+	paras = 0;
+	std::cout << "jumpC before " << mainL / 3 << " white2 " << white2 << std::endl;
+	Cwhite = 0;
+	mainL += (white1 * 6);
+	std::cout << "jumpC after " << mainL / 3 << std::endl;
+	firstPhase = mainL + ((white1) * 3);
+	for (mainL; mainL < firstPhase; mainL += 3){
+		if (pic[mainL] > Wrbg){
+			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+				Cwhite++;
+			}
+		}
+		else
+		{
+			paras++;
+		}
+	}
+	if (Cwhite < paras * 3){
+		STATE0();
+	}
+
+	std::cout << "after jumpC " << mainL / 3 << std::endl;
+	jumpC2();
+}
+
+void jumpC2(){
+	paras = 0;
+	mainL += ((white1 / 2) * 3);
+	std::cout << "jumpC2 startp  " << mainL / 3 << std::endl;
+	firstPhase = mainL + ((white1 / 2) * 3);
+	for (mainL; mainL < firstPhase; mainL += 3){
+		if (pic[mainL]>RTr){
+			if (pic[mainL - 2] < RTb && pic[mainL] < RTg){
+				C2red++;
+			}
+			else
+			{
+				paras++;
+			}
+
+		}
+		else
+		{
+			paras++;
+		}
+
+	}
+	if (C2red < paras * 3){
+		STATE0();
+	}
 
 }
