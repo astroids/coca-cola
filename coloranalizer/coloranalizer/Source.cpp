@@ -18,8 +18,7 @@
 
 
 /*
-her kirmizidan sonra parazit sifirlamayi kadir
-parazit limitini her redden sonra arttir
+	white 1 disinda gereksiz variable
 
 */
 
@@ -31,8 +30,9 @@ bool stateR();
 void stateRW();
 void stateRWR();
 void stateRWRW();
-void jumpC();
-void jumpC2();
+void jumpC1();
+void jumpC1void();
+void jumpA();
 
 void incPara();
 void fadeToBlack();
@@ -334,7 +334,7 @@ void stateRWRW(){
 	}
 	//system("pause");
 	std::cout << "STATE RWRW YUPP" << std::endl;
-	jumpC();
+	jumpC1();
 
 }
 
@@ -344,12 +344,12 @@ void stateRWRW(){
 
 
 
-void jumpC(){
+void jumpC1(){
 	paras = 0;
-	std::cout << "jumpC before " << mainL / 3 << " white2 " << white2 << std::endl;
+	std::cout << "jumpC1 before " << mainL / 3 << " white2 " << white2 << std::endl;
 	Cwhite = 0;
 	mainL += (white1 * 6);
-	std::cout << "jumpC after " << mainL / 3 << std::endl;
+	std::cout << "jumpC1 after " << mainL / 3 << std::endl;
 	firstPhase = mainL + ((white1) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
 		if (pic[mainL] > Wrbg){
@@ -366,14 +366,14 @@ void jumpC(){
 		STATE0();
 	}
 
-	std::cout << "after jumpC " << mainL / 3 << std::endl;
-	jumpC2();
+	std::cout << "after jumpC1 " << mainL / 3 << std::endl;
+	jumpC1void();
 }
 
-void jumpC2(){
+void jumpC1void(){
 	paras = 0;
 	mainL += ((white1 / 2) * 3);
-	std::cout << "jumpC2 startp  " << mainL / 3 << std::endl;
+	std::cout << "jumpC1 startp  " << mainL / 3 << std::endl;
 	firstPhase = mainL + ((white1 / 2) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
 		if (pic[mainL]>RTr){
@@ -395,5 +395,16 @@ void jumpC2(){
 	if (C2red < paras * 3){
 		STATE0();
 	}
+	std::cout << "leaving jumpC1 " << mainL / 3 << std::endl;
+	jumpA();
+	
+	
+
+}
+
+void jumpA(){
+	paras = 0;
+	//mainL = 
+
 
 }
