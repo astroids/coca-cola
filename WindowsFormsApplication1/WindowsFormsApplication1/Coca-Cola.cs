@@ -718,8 +718,8 @@ void stateRW(){
 
 ////////////////////////////////////////////					hic paraziti umursamiyor????????????
 void stateRWR(){
-	paras = 0;
-	red2 = 1;
+	paras = 1;
+	red2 = 0;
 	firstPhase = mainL + (white1 * 3);
 	for (mainL; mainL < firstPhase; mainL += 3)									///bu *3 ten eksik olabilir
 	{
