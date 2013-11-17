@@ -32,11 +32,12 @@ void stateRWR();
 void stateRWRW();
 void jumpC1();
 void jumpC1void();
-void jumpA();
-
-void incPara();
-void fadeToBlack();
-void resetRWFlags();
+void jumpA1();
+void jumpA2void();
+void jumpA11();
+void incPara();//
+void fadeToBlack();//
+void resetRWFlags();//
 void print();
 
 
@@ -51,6 +52,8 @@ int white2 = 0;
 int Cwhite = 0;
 int C2red = 0;
 int STARTPOINT;
+int A1white = 0;
+int A2red = 0;
 
 int paras = 0;
 size_t mainL;									/* bu sayi parametre  olarak gelmesi lzmmmm !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -315,7 +318,7 @@ void stateRWRW(){
 	paras = (white1 / 3);
 	for (mainL; mainL < firstPhase; mainL += 3)
 	{
-		std::cout << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
+		/*std::cout << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;*/
 
 		if (pic[mainL] > Wrbg){
 			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
@@ -370,14 +373,20 @@ void jumpC1(){
 	jumpC1void();
 }
 
+
+
+
+
 void jumpC1void(){
 	paras = 0;
+	C2red = 0;
 	mainL += ((white1 / 2) * 3);
-	std::cout << "jumpC1 startp  " << mainL / 3 << std::endl;
-	firstPhase = mainL + ((white1 / 2) * 3);
+	std::cout << "jumpC1void startp  " << mainL / 3 << std::endl;
+	firstPhase = mainL + ((white1) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
+		std::cout << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
 		if (pic[mainL]>RTr){
-			if (pic[mainL - 2] < RTb && pic[mainL] < RTg){
+			if (pic[mainL - 2] < RTb && pic[mainL-1] < RTg){
 				C2red++;
 			}
 			else
@@ -392,19 +401,112 @@ void jumpC1void(){
 		}
 
 	}
-	if (C2red < paras * 3){
+	if (C2red < (paras * 3)){
 		STATE0();
 	}
-	std::cout << "leaving jumpC1 " << mainL / 3 << std::endl;
-	jumpA();
+	else
+	{
+		std::cout << "leaving jumpC1 " << mainL / 3 << std::endl;
+		jumpA1();
+	}
+	
 	
 	
 
 }
-
-void jumpA(){
+void jumpA1(){
 	paras = 0;
-	//mainL = 
+	mainL += (white1 * 3);
+	firstPhase = mainL + ((white1 / 2) * 3);
+	std::cout << "jumpA1 startup " << mainL / 3 << std::endl;
+	for (mainL; mainL < firstPhase; mainL += 3){
+		if (pic[mainL] > Wrbg){
+			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+				A1white++;
+			}
+		}
+		else
+		{
+			paras++;
+		}
+	}
+	if (A1white < paras * 3){
+		STATE0();
+	}
+	else
+	{
+		std::cout << "leaving jumpA1 " << mainL / 3 << std::endl;
+		jumpA2void();
+
+	}
 
 
 }
+
+
+void jumpA2void(){
+	paras = 0;
+	A2red = 0;
+	mainL += ((white1) * 3);
+	std::cout << "jumpA2void startp  " << mainL / 3 << std::endl;
+	firstPhase = mainL + ((white1/2) * 3);
+	for (mainL; mainL < firstPhase; mainL += 3){
+		std::cout << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
+		if (pic[mainL] > RTr){
+			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+				A2red++;
+			}
+			else
+			{
+				paras++;
+			}
+
+		}
+		else
+		{
+			paras++;
+		}
+
+	}
+	if (A2red < (paras * 3)){
+		STATE0();
+	}
+	else
+	{
+		std::cout << "leaving jumpA1 " << mainL / 3 << std::endl;
+		jumpA11();
+	}
+
+
+
+}
+
+void jumpA11(){
+	paras = 0;
+	mainL += ((white1/2) * 3);
+	firstPhase = mainL + ((white1 / 2) * 3);
+	std::cout << "jumpA11 startup " << mainL / 3 << std::endl;
+	for (mainL; mainL < firstPhase; mainL += 3){
+		if (pic[mainL] > Wrbg){
+			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+				A1white++;
+			}
+		}
+		else
+		{
+			paras++;
+		}
+	}
+	if (A1white < paras * 3){
+		STATE0();
+	}
+	else
+	{
+		std::cout << "leaving jumpA11 " << mainL / 3 << std::endl;
+		jumpA2void();
+
+	}
+
+
+}
+
