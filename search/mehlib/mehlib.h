@@ -12,5 +12,5 @@ extern "C" {
 };
 
 extern "C"{
-	MEHLIB_API void  searchrw(unsigned char*  a, short bar, INT32 size, unsigned char* orig);
-
+	MEHLIB_API void  searchrw(unsigned char*  sour, INT32 size);
+}

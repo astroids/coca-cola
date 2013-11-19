@@ -35,6 +35,12 @@ void jumpC1void();
 void jumpA1();
 void jumpA2void();
 void jumpA11();
+void jumpBigC();
+void jumpbigCvoid();
+void jumpBigL();
+void jumpEND();
+void fadeTOGREEN();
+
 void incPara();//
 void fadeToBlack();//
 void resetRWFlags();//
@@ -48,13 +54,18 @@ std::ifstream f("lolcpp.txt");
 int red1 = 0;
 int red2 = 0;
 int white1 = 0;
+int halfwhite = 0;
 int white2 = 0;
 int Cwhite = 0;
 int C2red = 0;
-int STARTPOINT;
+size_t STARTPOINT;
 int A1white = 0;
 int A2red = 0;
-
+int bigC = 0;
+int bigCvoid = 0;
+int bigLwhite = 0;
+int endRed = 0;
+bool lostAndFound = false;
 int paras = 0;
 size_t mainL;									/* bu sayi parametre  olarak gelmesi lzmmmm !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 /* dll yazarken async calismazsa buraya baaakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk*/
@@ -167,6 +178,7 @@ void STATE0()
 
 ////////////////////////////////////					STATE 1111111111111111111111111111111111111  burada firstphase gereksiz olabilir
 bool stateR() {
+	STARTPOINT = mainL;
 	red1 = 1;
 	paras = 0;
 	std::cout << "stateR" << mainL / 3 << std::endl;
@@ -222,7 +234,13 @@ bool stateR() {
 
 
 	}
-
+	if (lostAndFound){
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 
 
 }
@@ -281,6 +299,7 @@ void stateRWR(){
 	std::cout << "stateRWR" << mainL / 3 << "  white1  " << white1 << std::endl;
 	paras = 0;
 	red2 = 1;
+	halfwhite = white1 / 2;
 	firstPhase = mainL + (white1 * 3) - 3;
 	for (mainL; mainL < firstPhase; mainL += 3)									///bu *3 ten eksik olabilir
 	{
@@ -483,6 +502,7 @@ void jumpA2void(){
 
 void jumpA11(){
 	paras = 0;
+	A1white = 0;
 	mainL += ((white1/2) * 3);
 	firstPhase = mainL + ((white1 / 2) * 3);
 	std::cout << "jumpA11 startup " << mainL / 3 << std::endl;
@@ -503,10 +523,152 @@ void jumpA11(){
 	else
 	{
 		std::cout << "leaving jumpA11 " << mainL / 3 << std::endl;
-		jumpA2void();
+		jumpBigC();
 
 	}
 
 
 }
 
+void jumpBigC(){
+	paras = 0;
+	mainL += ((white1) * 9);
+	firstPhase = mainL + ((white1) * 3);
+	std::cout << "jumpBigC startup " << mainL / 3 << std::endl;
+	for (mainL; mainL < firstPhase; mainL += 3){
+		if (pic[mainL] > Wrbg){
+			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+				bigC++;	
+			}
+		}
+		else
+		{
+			paras++;
+		}
+	}
+	if (bigC < paras * 3){
+		STATE0();
+	}
+	else
+	{
+		std::cout << "leaving jumpBigC " << mainL / 3 << std::endl;
+		jumpbigCvoid();
+
+	}
+
+
+}
+
+
+void jumpbigCvoid(){
+	paras = 0;
+	bigCvoid = 0;
+	mainL += ((white1 * 5) * 3);
+	firstPhase = mainL + ((white1) * 3);
+	std::cout << "bigCvoid startup " << mainL / 3 << std::endl;
+	for (mainL; mainL < firstPhase; mainL += 3){
+		std::cout << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
+		if (pic[mainL] > RTr){
+			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+				bigCvoid++;
+			}
+			else
+			{
+				paras++;
+			}
+
+		}
+		else
+		{
+			paras++;
+		}
+
+	}
+	if (bigCvoid < paras * 3){
+		STATE0();
+	}
+	else
+	{
+		std::cout << "leaving bigCvoid " << mainL / 3 << std::endl;
+		jumpBigL();
+
+	}
+
+
+}
+
+void jumpBigL(){
+	paras = 0;
+	bigLwhite = 0;
+	mainL += (((white1 *4)+halfwhite ) * 3);
+	firstPhase = mainL + ((halfwhite) * 3);
+	std::cout << "jumpBigL startup " << mainL / 3 << std::endl;
+	for (mainL; mainL < firstPhase; mainL += 3){
+		if (pic[mainL] > Wrbg){
+			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+				bigLwhite++;
+			}
+		}
+		else
+		{
+			paras++;
+		}
+	}
+	if (bigLwhite < paras * 3){
+		STATE0();
+	}
+	else
+	{
+		std::cout << "leaving jumpBigL " << mainL / 3 << std::endl;
+		jumpEND();
+
+	}
+
+}
+
+void jumpEND(){ 
+	paras = 0;
+	endRed = 0;
+	mainL += ((white1*4) * 3);
+	std::cout << "jumpeEND startp  " << mainL / 3 << std::endl;
+	firstPhase = mainL + ((white1) * 3);
+	for (mainL; mainL < firstPhase; mainL += 3){
+		std::cout << pic[mainL - 2] << " " << pic[mainL - 1] << " " << pic[mainL] << std::endl;
+		if (pic[mainL] > RTr){
+			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+				endRed++;
+			}
+			else
+			{
+				paras++;
+			}
+
+		}
+		else
+		{
+			paras++;
+		}
+
+	}
+	if (endRed < (paras * 3)){
+		STATE0();
+	}
+	else
+	{
+		fadeTOGREEN();
+		std::cout << "This is the END " << mainL / 3 << std::endl;
+		
+	}
+
+
+
+}
+
+void fadeTOGREEN(){
+	for (STARTPOINT; STARTPOINT < mainL; STARTPOINT+=3)
+	{
+		pic[STARTPOINT] = 0;
+	}
+	STARTPOINT = LIMI;
+	lostAndFound = true;
+}
