@@ -503,7 +503,7 @@ namespace WindowsFormsApplication1
         }
 
         [DllImport("mehlib.dll")]
-        static unsafe extern void searchrw(byte* sour, Int32 imgSize);
+        static unsafe extern void searchrw(byte* sour, Int32 imgSize, byte* ori);
         
         private void findCocaColaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -513,16 +513,16 @@ namespace WindowsFormsApplication1
             {
                 fixed (byte* or = Original)
                 {
-                    searchrw((byte*)bitdata.Scan0.ToPointer(), imagesize);
+                    searchrw((byte*)bitdata.Scan0.ToPointer(), imagesize*(3/4),or);
 
                 }
 
 
             }
-            //stopCPP.Stop();
-            //labelCPP.Text = stopCPP.ElapsedTicks.ToString();
-            //stopCPP.Reset();
-         //   pic.Image = bmpFront;
+            stopCPP.Stop();
+            labelCPP.Text = stopCPP.ElapsedTicks.ToString();
+            stopCPP.Reset();
+            pic.Image = bmpFront;
             bmpFront.UnlockBits(bitdata);
         }
       

@@ -58,7 +58,7 @@ int bigLwhite = 0;
 int endRed = 0;
 bool lostAndFound = false;
 int paras = 0;
-size_t mainL=0;
+size_t mainL=2;
 
 /*
 extern "C" int __declspec(dllexport)  addasm(int a, int b);
@@ -106,8 +106,8 @@ extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm, short bar, I
 
 
 
-extern "C" { MEHLIB_API void searchrw(unsigned char*  sour, INT32 size) {
-	pic = sour;
+extern "C" { MEHLIB_API void searchrw(unsigned char*  sour, INT32 size, unsigned char* orig) {
+	pic = orig;
 	limit = size;
 	STATE0();
 
