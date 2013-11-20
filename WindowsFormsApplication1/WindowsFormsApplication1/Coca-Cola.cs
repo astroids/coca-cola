@@ -481,7 +481,7 @@ namespace WindowsFormsApplication1
 
 
 
-        private void colorAnalizerForCpp_Click(object sender, EventArgs e)
+       // private void colorAnalizerForCpp_Click(object sender, EventArgs e)
         {
             string asd = null;
             bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
@@ -505,7 +505,7 @@ namespace WindowsFormsApplication1
         [DllImport("mehlib.dll")]
         static unsafe extern void searchrw(byte* sour, Int32 imgSize, byte* ori);
         
-        private void findCocaColaToolStripMenuItem_Click(object sender, EventArgs e)
+        //private void findCocaColaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
             stopCPP.Start();
