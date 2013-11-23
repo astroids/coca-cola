@@ -40,8 +40,8 @@ void fadeTOGREEN();
 size_t limit;
 size_t firstPhase;
 size_t picsize = 0;
-//std::vector<unsigned short> pic;
-unsigned char * pic;
+//std::vector<unsigned short> par;
+unsigned char * par;
 int red1 = 0;
 int red2 = 0;
 int white1 = 0;
@@ -106,8 +106,8 @@ extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm, short bar, I
 
 
 
-extern "C" { MEHLIB_API void searchrw(unsigned char*  sour, INT32 size, unsigned char* orig) {
-	pic = sour;
+extern "C" { void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size) {
+	par = sour;
 	limit = size;
 	STATE0();
 
@@ -119,12 +119,28 @@ extern "C" { MEHLIB_API void searchrw(unsigned char*  sour, INT32 size, unsigned
 //////////////////////////////////////					STATE 0000000000000000000000000000000000
 void STATE0()
 {
-	/// kirmizimi testi       for (mainL = 2; mainL < pic.size() ; mainL+=3) offfff 2den basla
+	///bunlari azalttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+	red1 = 0;
+	red2 = 0;
+	white1 = 0;
+	halfwhite = 0;
+	white2 = 0;
+	Cwhite = 0;
+	C2red = 0;
+	A1white = 0;
+	A2red = 0;
+	bigC = 0;
+	bigCvoid = 0;
+	bigLwhite = 0;
+	endRed = 0;
+	paras = 0;
+
+	/// kirmizimi testi       for (mainL = 2; mainL < par.size() ; mainL+=3) offfff 2den basla
 	for (mainL; mainL < limit; mainL += 3)
 	{
-		if (pic[mainL] > RTr)
+		if (par[mainL] > RTr)
 		{
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg)
+			if (par[mainL - 2] < RTb && par[mainL - 1] < RTg)
 			{
 				stateR();
 
@@ -151,14 +167,13 @@ bool stateR() {
 	STARTPOINT = mainL;
 	red1 = 1;
 	paras = 0;
-	std::cout << "stateR" << mainL / 3 << std::endl;
 	firstPhase = mainL + 30;
 	for (mainL; mainL < firstPhase; mainL += 3)
 	{
 		//ilk 10 pixel kirmizi değilse direk don				
-		if (pic[mainL] > RTr)
+		if (par[mainL] > RTr)
 		{
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg)
+			if (par[mainL - 2] < RTb && par[mainL - 1] < RTg)
 			{
 				red1++;
 
@@ -181,12 +196,12 @@ bool stateR() {
 	/// artik kirmizimi deilse beyazmı
 	for (mainL; mainL < limit; mainL += 3)
 	{
-		if (pic[mainL] > RTr) {
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+		if (par[mainL] > RTr) {
+			if (par[mainL - 2] < RTb && par[mainL - 1] < RTg){
 				red1++;
 			}
-			else if (pic[mainL] > Wrbg){
-				if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg){
+			else if (par[mainL] > Wrbg){
+				if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg){
 					stateRW();
 					break;
 				}
@@ -219,11 +234,11 @@ void stateRW(){
 	//ilk 10 pixel
 	firstPhase = mainL + 30;
 	for (mainL; mainL < firstPhase; mainL += 3) {
-		if ((pic[mainL] < Wrbg)){
+		if ((par[mainL] < Wrbg)){
 			STATE0();
 			break;
 		}
-		if ((pic[mainL - 2]) < Wrbg && (pic[mainL - 1] < Wrbg)) {
+		if ((par[mainL - 2]) < Wrbg && (par[mainL - 1] < Wrbg)) {
 			STATE0();
 			break;
 		}
@@ -231,15 +246,15 @@ void stateRW(){
 	white1 += 10;
 
 	for (mainL; mainL < limit; mainL += 3){
-		if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
-			if (pic[mainL]>RTr){
+		if (par[mainL - 2] < RTb && par[mainL - 1] < RTg){
+			if (par[mainL]>RTr){
 				stateRWR();
 				break;
 			}
 		}
 
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+		if (par[mainL] > Wrbg){
+			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
 				white1++;
 			}
 		}
@@ -266,11 +281,11 @@ void stateRWR(){
 	for (mainL; mainL < firstPhase; mainL += 3)									///bu *3 ten eksik olabilir
 	{
 
-		if (pic[mainL] < RTr)
+		if (par[mainL] < RTr)
 		{
 			STATE0();
 			break;
-		}if ((pic[mainL - 2]) > RTb && (pic[mainL - 1] > RTg))
+		}if ((par[mainL - 2]) > RTb && (par[mainL - 1] > RTg))
 		{
 			STATE0();
 			break;
@@ -297,8 +312,8 @@ void stateRWRW(){
 	for (mainL; mainL < firstPhase; mainL += 3)
 	{
 
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+		if (par[mainL] > Wrbg){
+			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
 				white2++;
 			}
 			else
@@ -327,8 +342,8 @@ void jumpC1(){
 	mainL += (white1 * 6);
 	firstPhase = mainL + ((white1) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+		if (par[mainL] > Wrbg){
+			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
 				Cwhite++;
 			}
 		}
@@ -354,8 +369,8 @@ void jumpC1void(){
 	mainL += ((white1 / 2) * 3);
 	firstPhase = mainL + ((white1) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > RTr){
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+		if (par[mainL] > RTr){
+			if (par[mainL - 2] < RTb && par[mainL - 1] < RTg){
 				C2red++;
 			}
 			else
@@ -387,8 +402,8 @@ void jumpA1(){
 	mainL += (white1 * 3);
 	firstPhase = mainL + ((white1 / 2) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+		if (par[mainL] > Wrbg){
+			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
 				A1white++;
 			}
 		}
@@ -416,8 +431,8 @@ void jumpA2void(){
 	mainL += ((white1) * 3);
 	firstPhase = mainL + ((white1 / 2) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > RTr){
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+		if (par[mainL] > RTr){
+			if (par[mainL - 2] < RTb && par[mainL - 1] < RTg){
 				A2red++;
 			}
 			else
@@ -450,8 +465,8 @@ void jumpA11(){
 	mainL += ((white1 / 2) * 3);
 	firstPhase = mainL + ((white1 / 2) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+		if (par[mainL] > Wrbg){
+			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
 				A1white++;
 			}
 		}
@@ -477,8 +492,8 @@ void jumpBigC(){
 	mainL += ((white1) * 9);
 	firstPhase = mainL + ((white1) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+		if (par[mainL] > Wrbg){
+			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
 				bigC++;
 			}
 		}
@@ -506,8 +521,8 @@ void jumpbigCvoid(){
 	mainL += ((white1 * 5) * 3);
 	firstPhase = mainL + ((white1) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > RTr){
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+		if (par[mainL] > RTr){
+			if (par[mainL - 2] < RTb && par[mainL - 1] < RTg){
 				bigCvoid++;
 			}
 			else
@@ -540,8 +555,8 @@ void jumpBigL(){
 	mainL += (((white1 * 4) + halfwhite) * 3);
 	firstPhase = mainL + ((halfwhite) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > Wrbg){
-			if (pic[mainL - 2] > Wrbg && pic[mainL - 1] > Wrbg) {
+		if (par[mainL] > Wrbg){
+			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
 				bigLwhite++;
 			}
 		}
@@ -567,8 +582,8 @@ void jumpEND(){
 	mainL += ((white1 * 4) * 3);
 	firstPhase = mainL + ((white1) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
-		if (pic[mainL] > RTr){
-			if (pic[mainL - 2] < RTb && pic[mainL - 1] < RTg){
+		if (par[mainL] > RTr){
+			if (par[mainL - 2] < RTb && par[mainL - 1] < RTg){
 				endRed++;
 			}
 			else
@@ -596,9 +611,9 @@ void jumpEND(){
 }
 
 void fadeTOGREEN(){
-	for (STARTPOINT; STARTPOINT < mainL; STARTPOINT += 3)
+	for (STARTPOINT; STARTPOINT < mainL; STARTPOINT++ )
 	{
-		pic[STARTPOINT] = 0;
+		par[STARTPOINT] = 0;
 	}
 	//system("exit");
 	//STARTPOINT = limit;

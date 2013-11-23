@@ -1,16 +1,21 @@
-﻿Build started 23/11/2013 21:19:46.
-     1>Project "G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\mehlib\mehlib.vcxproj" on node 2 (Build target(s)).
+﻿Build started 23/11/2013 23:17:04.
+     1>Project "G:\Engi\Git\coca-cola\search\mehlib\mehlib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D MEHLIB_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Debug\mehlib.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D MEHLIB_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt dllmain.cpp
+         dllmain.cpp
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D MEHLIB_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Debug\mehlib.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt mehlib.cpp
          mehlib.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Debug\mehlib.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Debug\mehlib.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Debug\mehlib.lib" /MACHINE:X64 /DLL x64\Debug\dllmain.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Engi\Git\coca-cola\search\x64\Debug\mehlib.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Engi\Git\coca-cola\search\x64\Debug\mehlib.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Engi\Git\coca-cola\search\x64\Debug\mehlib.lib" /MACHINE:X64 /DLL x64\Debug\dllmain.obj
          x64\Debug\mehlib.obj
          x64\Debug\stdafx.obj
          x64\Debug\meh.obj
-         mehlib.vcxproj -> G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Debug\mehlib.dll
-     1>Done Building Project "G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\mehlib\mehlib.vcxproj" (Build target(s)).
+            Creating library G:\Engi\Git\coca-cola\search\x64\Debug\mehlib.lib and object G:\Engi\Git\coca-cola\search\x64\Debug\mehlib.exp
+         mehlib.vcxproj -> G:\Engi\Git\coca-cola\search\x64\Debug\mehlib.dll
+     1>Done Building Project "G:\Engi\Git\coca-cola\search\mehlib\mehlib.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.68
+Time Elapsed 00:00:04.60
