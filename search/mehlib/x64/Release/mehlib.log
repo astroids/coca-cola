@@ -1,19 +1,19 @@
-﻿Build started 19/11/2013 11:55:41.
-     1>Project "G:\Engi\Git\coca-cola\search\mehlib\mehlib.vcxproj" on node 2 (Build target(s)).
+﻿Build started 23/11/2013 21:17:24.
+     1>Project "G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\mehlib\mehlib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MEHLIB_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release\mehlib.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt mehlib.cpp
          mehlib.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Engi\Git\coca-cola\search\x64\Release\mehlib.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Engi\Git\coca-cola\search\x64\Release\mehlib.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Engi\Git\coca-cola\search\x64\Release\mehlib.lib" /MACHINE:X64 /DLL x64\Release\dllmain.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Release\mehlib.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Release\mehlib.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Release\mehlib.lib" /MACHINE:X64 /DLL x64\Release\dllmain.obj
          x64\Release\mehlib.obj
          x64\Release\stdafx.obj
          x64\Release\meh.obj
-            Creating library G:\Engi\Git\coca-cola\search\x64\Release\mehlib.lib and object G:\Engi\Git\coca-cola\search\x64\Release\mehlib.exp
+            Creating library G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Release\mehlib.lib and object G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Release\mehlib.exp
          Generating code
          Finished generating code
-         mehlib.vcxproj -> G:\Engi\Git\coca-cola\search\x64\Release\mehlib.dll
-     1>Done Building Project "G:\Engi\Git\coca-cola\search\mehlib\mehlib.vcxproj" (Build target(s)).
+         mehlib.vcxproj -> G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\x64\Release\mehlib.dll
+     1>Done Building Project "G:\Engi\gityedek\coca cola mustafa oncesi\coca-cola\search\mehlib\mehlib.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.61
+Time Elapsed 00:00:04.86

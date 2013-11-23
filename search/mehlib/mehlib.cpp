@@ -107,7 +107,7 @@ extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm, short bar, I
 
 
 extern "C" { MEHLIB_API void searchrw(unsigned char*  sour, INT32 size, unsigned char* orig) {
-	pic = orig;
+	pic = sour;
 	limit = size;
 	STATE0();
 
@@ -600,6 +600,7 @@ void fadeTOGREEN(){
 	{
 		pic[STARTPOINT] = 0;
 	}
-	STARTPOINT = limit;
+	//system("exit");
+	//STARTPOINT = limit;
 	lostAndFound = true;
 }
