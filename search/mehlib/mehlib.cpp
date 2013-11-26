@@ -20,21 +20,21 @@
 
 #include <iostream>	//kaldir bunu  butun io larla birlikte
 #include <vector>
-void STATE0();
+bool STATE0();
 bool stateR();
-void stateRW();
-void stateRWR();
-void stateRWRW();
-void jumpC1();
-void jumpC1void();
-void jumpA1();
-void jumpA2void();
-void jumpA11();
-void jumpBigC();
-void jumpbigCvoid();
-void jumpBigL();
-void jumpEND();
-void fadeTOGREEN();
+bool stateRW();
+bool stateRWR();
+bool stateRWRW();
+bool jumpC1();
+bool jumpC1void();
+bool jumpA1();
+bool jumpA2void();
+bool jumpA11();
+bool jumpBigC();
+bool jumpbigCvoid();
+bool jumpBigL();
+bool jumpEND();
+bool fadeTOGREEN();
 
 
 size_t limit;
@@ -42,21 +42,21 @@ size_t firstPhase;
 size_t picsize = 0;
 //std::vector<unsigned short> par;
 unsigned char * par;
-int banana = 0;
-int white1 = 0;
-int halfwhite = 0;
+size_t banana = 0;
+size_t white1 = 0;
+size_t halfwhite = 0;
 size_t STARTPOINT;
 
 
 bool lostAndFound = false;
-int paras = 0;
-size_t mainL=2;
+size_t paras = 0;
+size_t mainL = 2;
 
 /*
 extern "C" int __declspec(dllexport)  addasm(int a, int b);
 
 extern "C" {int __declspec(dllexport)  add(int a, int b){
-	return addasm(a,b);
+return addasm(a,b);
 }}
 */
 
@@ -68,8 +68,8 @@ extern "C"{
 		unsigned char * n2 = _norm + (_size / 2);
 		unsigned char * o2 = _ori + (_size / 2);
 
-		std::async(std::launch::async, adjustASM,_norm, _ori, _bar, _size/2);
-		std::async(std::launch::async, adjustASM, n2, o2, _bar, _size/2);
+		std::async(std::launch::async, adjustASM, _norm, _ori, _bar, _size / 2);
+		std::async(std::launch::async, adjustASM, n2, o2, _bar, _size / 2);
 
 		//adjustASM(_norm, _ori, _bar, _size);
 
@@ -100,7 +100,7 @@ extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm, short bar, I
 
 extern "C" { void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size) {
 	par = sour;
-	limit = size;
+	limit = size - 1000;
 	STATE0();
 
 }
@@ -109,7 +109,7 @@ extern "C" { void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size
 
 
 //////////////////////////////////////					STATE 0000000000000000000000000000000000
-void STATE0()
+bool STATE0()
 {
 	///bunlari azalttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 	banana = 0;
@@ -130,7 +130,7 @@ void STATE0()
 
 		}
 	}
-
+	return 0;
 }
 
 
@@ -184,8 +184,8 @@ bool stateR() {
 			}
 			else if (par[mainL] > Wrbg){
 				if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg){
-					stateRW();
-					break;
+					return stateRW();
+					
 				}
 			}
 			else {
@@ -208,7 +208,7 @@ bool stateR() {
 
 
 //////////////////////////////////  buradan sadece state 0 a donus var 
-void stateRW(){
+bool stateRW(){
 
 	paras = 0;						////////// burada geleck parazit degeri hesaplanabilir ama algoritmayi cok yavaslatabilir
 	white1 = 1;
@@ -217,12 +217,12 @@ void stateRW(){
 	firstPhase = mainL + 30;
 	for (mainL; mainL < firstPhase; mainL += 3) {
 		if ((par[mainL] < Wrbg)){
-			STATE0();
-			break;
+			return STATE0();
+			 
 		}
 		if ((par[mainL - 2]) < Wrbg && (par[mainL - 1] < Wrbg)) {
-			STATE0();
-			break;
+			return STATE0();
+			
 		}
 	}
 	white1 += 10;
@@ -230,8 +230,7 @@ void stateRW(){
 	for (mainL; mainL < limit; mainL += 3){
 		if (par[mainL - 2] < RTb && par[mainL - 1] < RTg){
 			if (par[mainL]>RTr){
-				stateRWR();
-				break;
+				return stateRWR();
 			}
 		}
 
@@ -244,42 +243,48 @@ void stateRW(){
 		{
 			paras++;
 			if (paras * 3 > white1){
-				STATE0();
-				break;
+				return STATE0();
 			}
 		}
 
 
-	}
+	}return 0;
 }
 
 
 ////////////////////////////////////////////					hic paraziti umursamiyor????????????
-void stateRWR(){
-	paras = 0;
-	banana = 1;
-	halfwhite = white1 / 2;
-	firstPhase = mainL + (white1 * 3) - 3;
-	for (mainL; mainL < firstPhase; mainL += 3)									///bu *3 ten eksik olabilir
-	{
-
-		if (par[mainL] < RTr)
-		{
-			STATE0();
-			break;
-		}if ((par[mainL - 2]) > RTb && (par[mainL - 1] > RTg))
-		{
-			STATE0();
-			break;
+bool stateRWR(){
+		if (limit < (36 * white1) + mainL){
+			return STATE0(); 
 		}
-		banana++;
-	}
-	banana = white1 + 1;																		//yukariyi degistirirsen burayida degistir
-
-	mainL += ((banana / 4) * 3);							//burayi napcaz bilmiyom
-	stateRWRW();
+		else
+		{
 
 
+			paras = 0;
+			banana = 1;
+			halfwhite = (white1 / 2);
+			firstPhase = mainL + (white1 * 3) - 3;
+			for (mainL; mainL < firstPhase; mainL += 3)									///bu *3 ten eksik olabilir
+			{
+
+				if (par[mainL] < RTr)
+				{
+					return STATE0();
+					
+				}if ((par[mainL - 2]) > RTb && (par[mainL - 1] > RTg))
+				{
+					return STATE0();
+					
+				}
+				banana++;
+			}
+			banana = white1 + 1;																		//yukariyi degistirirsen burayida degistir
+
+			mainL += ((banana / 4) * 3);							//burayi napcaz bilmiyom
+			return stateRWRW(); 
+
+		}
 
 
 
@@ -287,8 +292,9 @@ void stateRWR(){
 }
 
 
-void stateRWRW(){
+bool stateRWRW(){
 	banana = 0;
+	paras = 0;
 	firstPhase = mainL + (white1 * 3);
 	paras = (white1 / 3);
 	for (mainL; mainL < firstPhase; mainL += 3)
@@ -298,18 +304,17 @@ void stateRWRW(){
 			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
 				banana++;
 			}
-			else
-			{
-				paras--;
-				if (paras == 0){
-					STATE0();
-					break;
-				}
+		}
+		else
+		{
+			paras--;
+			if (paras == 0){
+				return STATE0();
+				
 			}
 		}
 	}
-	jumpC1();
-
+	return jumpC1();
 }
 
 
@@ -317,8 +322,11 @@ void stateRWRW(){
 
 
 
+
+
+
 //coc
-void jumpC1(){
+bool jumpC1(){
 	paras = 0;
 	banana = 0;
 	mainL += (white1 * 6);
@@ -335,20 +343,20 @@ void jumpC1(){
 		}
 	}
 	if (banana < paras * 3){
-		STATE0();
+		return STATE0(); 
 	}
 
-	jumpC1void();
+	return jumpC1void(); 
 }
 
 
 
 
 /// coc boslugu
-void jumpC1void(){
+bool jumpC1void(){
 	paras = 0;
 	banana = 0;
-	mainL += ((white1 / 2) * 3);
+	mainL += ((( white1 / 2)) * 3);
 	firstPhase = mainL + ((white1) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
 		if (par[mainL] > RTr){
@@ -368,11 +376,11 @@ void jumpC1void(){
 
 	}
 	if (banana < (paras * 3)){
-		STATE0();
+		return STATE0();
 	}
 	else
 	{
-		jumpA1();
+		return jumpA1();
 	}
 
 
@@ -381,10 +389,10 @@ void jumpC1void(){
 }
 
 //coc a baslangic
-void jumpA1(){
+bool jumpA1(){
 	paras = 0;
 	mainL += (white1 * 3);
-	firstPhase = mainL + ((white1 / 2) * 3);
+	firstPhase = mainL + (( white1 / 2) * 3);
 	for (mainL; mainL < firstPhase; mainL += 3){
 		if (par[mainL] > Wrbg){
 			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
@@ -397,11 +405,11 @@ void jumpA1(){
 		}
 	}
 	if (banana < paras * 3){
-		STATE0();
+		return STATE0();
 	}
 	else
 	{
-		jumpA2void();
+		return jumpA2void();
 
 	}
 
@@ -409,7 +417,7 @@ void jumpA1(){
 }
 
 //coca a orta
-void jumpA2void(){
+bool jumpA2void(){
 	paras = 0;
 	banana = 0;
 	mainL += ((white1) * 3);
@@ -432,11 +440,11 @@ void jumpA2void(){
 
 	}
 	if (banana < (paras * 3)){
-		STATE0();
+		return STATE0();
 	}
 	else
 	{
-		jumpA11();
+		return jumpA11();
 	}
 
 
@@ -445,11 +453,11 @@ void jumpA2void(){
 
 
 //coca a son
-void jumpA11(){
+bool jumpA11(){
 	paras = 0;
 	banana = 0;
-	mainL += ((white1 / 2) * 3);
-	firstPhase = mainL + ((white1 / 2) * 3);
+	mainL += (( white1 / 2) * 3);
+	firstPhase = mainL + (white1 / 2) * 3;
 	for (mainL; mainL < firstPhase; mainL += 3){
 		if (par[mainL] > Wrbg){
 			if (par[mainL - 2] > Wrbg && par[mainL - 1] > Wrbg) {
@@ -462,11 +470,11 @@ void jumpA11(){
 		}
 	}
 	if (banana < paras * 3){
-		STATE0();
+		return STATE0();
 	}
 	else
 	{
-		jumpBigC();
+		return jumpBigC();
 
 	}
 
@@ -474,7 +482,7 @@ void jumpA11(){
 }
 
 //coca C beyaz
-void jumpBigC(){
+bool jumpBigC(){
 	paras = 0;
 	banana = 0;
 	mainL += ((white1) * 9);
@@ -491,11 +499,11 @@ void jumpBigC(){
 		}
 	}
 	if (banana < paras * 3){
-		STATE0();
+		return STATE0();
 	}
 	else
 	{
-		jumpbigCvoid();
+		return jumpbigCvoid();
 
 	}
 
@@ -503,7 +511,7 @@ void jumpBigC(){
 }
 
 // coca C-o arasi  kirmizi
-void jumpbigCvoid(){
+bool jumpbigCvoid(){
 	paras = 0;
 	banana = 0;
 	mainL += ((white1 * 5) * 3);
@@ -526,11 +534,11 @@ void jumpbigCvoid(){
 
 	}
 	if (banana < paras * 3){
-		STATE0();
+		return STATE0();
 	}
 	else
 	{
-		jumpBigL();
+		return jumpBigL();
 
 	}
 
@@ -538,7 +546,7 @@ void jumpbigCvoid(){
 }
 
 //coca Col  i 
-void jumpBigL(){
+bool jumpBigL(){
 	paras = 0;
 	banana = 0;
 	mainL += (((white1 * 4) + halfwhite) * 3);
@@ -555,17 +563,17 @@ void jumpBigL(){
 		}
 	}
 	if (banana < paras * 3){
-		STATE0();
+		return STATE0();
 	}
 	else
 	{
-		jumpEND();
+		return jumpEND();
 
 	}
 
 }
 // son kirmizi
-void jumpEND(){
+bool jumpEND(){
 	paras = 0;
 	banana = 0;
 	mainL += ((white1 * 4) * 3);
@@ -588,23 +596,24 @@ void jumpEND(){
 
 	}
 	if (banana < (paras * 3)){
-		STATE0();
+		return STATE0(); 
 	}
 	else
 	{
-		fadeTOGREEN();
+		return fadeTOGREEN();
 	}
 
 
 
 }
 
-void fadeTOGREEN(){
-	for (STARTPOINT; STARTPOINT < mainL; STARTPOINT++ )
+bool fadeTOGREEN(){
+	for (STARTPOINT; STARTPOINT < mainL; STARTPOINT++)
 	{
 		par[STARTPOINT] = 0;
 	}
 	//system("exit");
 	//STARTPOINT = limit;
 	lostAndFound = true;
+	return 1;
 }

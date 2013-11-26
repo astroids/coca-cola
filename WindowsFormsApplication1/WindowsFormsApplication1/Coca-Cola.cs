@@ -50,7 +50,7 @@ namespace WindowsFormsApplication1
         /// </summary>
         public Bitmap bmpFront;
         public byte[] Original;
-        private static Int64 imagesize = 0;
+        private static Int32 imagesize = 0;
         public static Rectangle picRect;
         public BitmapData bitdata;
 
@@ -198,7 +198,7 @@ namespace WindowsFormsApplication1
                     //adjustb((byte*)bitdata.Scan0.ToPointer(), (short)60, imagesize, or);  
 
                     byte* norm = (byte*)bitdata.Scan0.ToPointer();
-                    Int64 size = imagesize;
+                    Int32 size = imagesize;
                     short bar = (short)trackCS.Value;
                     for (int i = 0; i < size; i++)
                     {
@@ -247,7 +247,7 @@ namespace WindowsFormsApplication1
             {
                 fixed (byte* or = Original)
                 {
-                   // adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackCPP.Value, imagesize, or);
+                    adjustb((byte*)bitdata.Scan0.ToPointer(), (short)trackCPP.Value, imagesize, or);
 
                 }
 
@@ -272,7 +272,7 @@ namespace WindowsFormsApplication1
             {
                 fixed (byte* or = Original)
                 {
-                    //adjustASMadap((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);
+                    adjustASMadap((byte*)bitdata.Scan0.ToPointer(), (short)trackASM.Value, imagesize, or);
 
                 }
 
@@ -289,11 +289,11 @@ namespace WindowsFormsApplication1
 
         }
         [DllImport("mehlib.dll")]
-        static unsafe extern void searchrw(byte* sour, Int64 imgSize);
+        static unsafe extern void searchrw(byte* sour, Int32 imgSize);
 
         private void findCocaColaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bitdata = bmpFront.LockBits(picRect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
             stopCPP.Start();
             unsafe
             {
