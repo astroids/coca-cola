@@ -209,7 +209,7 @@ bool stateR() {
 
 //////////////////////////////////  buradan sadece state 0 a donus var 
 bool stateRW(){
-
+	STARTPOINT = mainL;
 	paras = 0;						////////// burada geleck parazit degeri hesaplanabilir ama algoritmayi cok yavaslatabilir
 	white1 = 1;
 
@@ -279,9 +279,9 @@ bool stateRWR(){
 				}
 				banana++;
 			}
-			banana = white1 + 1;																		//yukariyi degistirirsen burayida degistir
+			//banana = white1 + 1;																		//yukariyi degistirirsen burayida degistir
 
-			mainL += ((banana / 4) * 3);							//burayi napcaz bilmiyom
+			mainL += ((white1 / 4) * 3);							//burayi napcaz bilmiyom
 			return stateRWRW(); 
 
 		}
