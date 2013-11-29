@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
         private static Int32 imagesize = 0;
         public static Rectangle picRect;
         public BitmapData bitdata;
-
+        private int vert;
 
         Stopwatch stopCsharp = new Stopwatch();
         Stopwatch stopCPP = new Stopwatch();
@@ -99,7 +99,7 @@ namespace WindowsFormsApplication1
                         // COPY ATM CHANGE TO HANDLE
                         bmpFront = (Bitmap)Image.FromFile(asd.FileName);
                         SaveOriginal(bmpFront);
-
+                        vert = bmpFront.Width;
                         pic.Image = bmpFront;
                         trackCS.Enabled = true;
                         trackCPP.Enabled = true;
@@ -113,7 +113,10 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("File Coulnt't be opend");
                 }
             }
+         //   MessageBox.Show(vert.ToString());
         }
+        
+
 
         public void clearImage()
         {
@@ -289,7 +292,7 @@ namespace WindowsFormsApplication1
 
         }
         [DllImport("mehlib.dll")]
-        static unsafe extern void searchrw(byte* sour, Int32 imgSize);
+        static unsafe extern void searchrw(byte* sour, Int32 imgSize, Int32 vertical);
 
         private void findCocaColaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -298,7 +301,7 @@ namespace WindowsFormsApplication1
             unsafe
             {
 
-                  searchrw((byte*)bitdata.Scan0.ToPointer(), imagesize);
+                  searchrw((byte*)bitdata.Scan0.ToPointer(), imagesize ,vert);
 
 
             }

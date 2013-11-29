@@ -12,5 +12,5 @@ extern "C" {
 };
 
 extern "C"{
-	void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size);
+	void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size ,INT32 ver);
 }

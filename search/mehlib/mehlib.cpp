@@ -46,7 +46,7 @@ size_t banana = 0;
 size_t white1 = 0;
 size_t halfwhite = 0;
 size_t STARTPOINT;
-
+size_t vert;
 
 bool lostAndFound = false;
 size_t paras = 0;
@@ -98,7 +98,8 @@ extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm, short bar, I
 
 
 
-extern "C" { void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size) {
+extern "C" { void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size,INT32 ver) {
+	vert = ver*3;			//bu videoda birkere
 	par = sour;
 	limit = size - 1000;
 	mainL = 2;
@@ -150,7 +151,7 @@ bool stateR() {
 	STARTPOINT = mainL;
 	banana = 1;
 	paras = 0;
-	firstPhase = mainL + 30;
+	firstPhase = mainL + 15;
 	for (mainL; mainL < firstPhase; mainL += 3)
 	{
 		//ilk 10 pixel kirmizi değilse direk don				
@@ -173,7 +174,7 @@ bool stateR() {
 	}
 
 
-	banana = 11;
+	banana = 6;
 
 
 	/// artik kirmizimi deilse beyazmı
@@ -215,7 +216,7 @@ bool stateRW(){
 	white1 = 1;
 
 	//ilk 10 pixel
-	firstPhase = mainL + 30;
+	firstPhase = mainL + 15;
 	for (mainL; mainL < firstPhase; mainL += 3) {
 		if ((par[mainL] < Wrbg)){
 			return STATE0();
@@ -226,7 +227,7 @@ bool stateRW(){
 			
 		}
 	}
-	white1 += 10;
+	white1 += 5;
 
 	for (mainL; mainL < limit; mainL += 3){
 		if (par[mainL - 2] < RTb && par[mainL - 1] < RTg){
@@ -258,7 +259,9 @@ bool stateRWR(){
 		if (limit < (36 * white1) + mainL){
 			return STATE0(); 
 		}
-		else
+		else if (white1 > (vert / 10)){
+			return STATE0;
+		}else
 		{
 
 
@@ -609,10 +612,19 @@ bool jumpEND(){
 }
 
 bool fadeTOGREEN(){
-	for (STARTPOINT; STARTPOINT < mainL; STARTPOINT++)
+
+	
+	///																							burası array overflova davet
+	for (size_t i = 0; i < 5; i++)
 	{
-		par[STARTPOINT] = 0;
+		STARTPOINT += vert;
+		mainL += vert;
+		for (STARTPOINT; STARTPOINT < mainL; STARTPOINT++)
+		{
+			par[STARTPOINT] = 0;
+		}
 	}
+
 	//system("exit");
 	//STARTPOINT = limit;
 	lostAndFound = true;
