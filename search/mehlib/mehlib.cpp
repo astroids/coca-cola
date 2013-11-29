@@ -101,6 +101,7 @@ extern "C" {void _declspec(dllexport) adjustb(unsigned char*  norm, short bar, I
 extern "C" { void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size) {
 	par = sour;
 	limit = size - 1000;
+	mainL = 2;
 	STATE0();
 
 }
