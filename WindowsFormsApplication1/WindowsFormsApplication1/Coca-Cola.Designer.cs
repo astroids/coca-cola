@@ -40,12 +40,13 @@
             this.findC2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rWFindCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorAnalizerForCpp = new System.Windows.Forms.ToolStripMenuItem();
+            this.findCocaColaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cocaColaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileBrowse = new System.Windows.Forms.OpenFileDialog();
             this.trackCPP = new System.Windows.Forms.TrackBar();
             this.trackASM = new System.Windows.Forms.TrackBar();
             this.labelCPP = new System.Windows.Forms.Label();
             this.labelASM = new System.Windows.Forms.Label();
-            this.findCocaColaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCS)).BeginInit();
             this.menu.SuspendLayout();
@@ -95,7 +96,8 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.findToolStripMenuItem});
+            this.findToolStripMenuItem,
+            this.cocaColaToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(868, 24);
@@ -115,14 +117,14 @@
             // openPict
             // 
             this.openPict.Name = "openPict";
-            this.openPict.Size = new System.Drawing.Size(103, 22);
+            this.openPict.Size = new System.Drawing.Size(152, 22);
             this.openPict.Text = "Op&en";
             this.openPict.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -136,8 +138,8 @@
             this.findCocaColaToolStripMenuItem});
             this.findToolStripMenuItem.Enabled = false;
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
-            this.findToolStripMenuItem.Text = "Find";
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.findToolStripMenuItem.Text = "Tools";
             // 
             // findCToolStripMenuItem
             // 
@@ -166,6 +168,20 @@
             this.colorAnalizerForCpp.Size = new System.Drawing.Size(220, 22);
             this.colorAnalizerForCpp.Text = "C# MColor Analizer for CPP";
             this.colorAnalizerForCpp.Click += new System.EventHandler(this.colorAnalizerForCpp_Click);
+            // 
+            // findCocaColaToolStripMenuItem
+            // 
+            this.findCocaColaToolStripMenuItem.Name = "findCocaColaToolStripMenuItem";
+            this.findCocaColaToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.findCocaColaToolStripMenuItem.Text = "Find Coca-Cola";
+            this.findCocaColaToolStripMenuItem.Click += new System.EventHandler(this.findCocaColaToolStripMenuItem_Click);
+            // 
+            // cocaColaToolStripMenuItem
+            // 
+            this.cocaColaToolStripMenuItem.Name = "cocaColaToolStripMenuItem";
+            this.cocaColaToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.cocaColaToolStripMenuItem.Text = "Coca-Cola";
+            this.cocaColaToolStripMenuItem.Click += new System.EventHandler(this.cocaColaToolStripMenuItem_Click);
             // 
             // fileBrowse
             // 
@@ -221,13 +237,6 @@
             this.labelASM.TabIndex = 8;
             this.labelASM.Text = "ASM average";
             // 
-            // findCocaColaToolStripMenuItem
-            // 
-            this.findCocaColaToolStripMenuItem.Name = "findCocaColaToolStripMenuItem";
-            this.findCocaColaToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.findCocaColaToolStripMenuItem.Text = "Find Coca-Cola";
-            this.findCocaColaToolStripMenuItem.Click += new System.EventHandler(this.findCocaColaToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +284,7 @@
         private System.Windows.Forms.ToolStripMenuItem rWFindCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colorAnalizerForCpp;
         private System.Windows.Forms.ToolStripMenuItem findCocaColaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cocaColaToolStripMenuItem;
     }
 }
 

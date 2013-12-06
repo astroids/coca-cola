@@ -62,6 +62,7 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+            cocaColaToolStripMenuItem.Enabled = false;
         }
 
 
@@ -105,6 +106,7 @@ namespace WindowsFormsApplication1
                         trackCPP.Enabled = true;
                         trackASM.Enabled = true;
                         findToolStripMenuItem.Enabled = true;
+                        cocaColaToolStripMenuItem.Enabled = true;
                     }
                 }
                 catch (Exception)
@@ -526,6 +528,26 @@ namespace WindowsFormsApplication1
             bmpFront.UnlockBits(bitdata);
             MessageBox.Show("Finished");
         }
+
+        private void cocaColaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bitdata = bmpFront.LockBits(picRect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            stopCPP.Start();
+            unsafe
+            {
+
+                searchrw((byte*)bitdata.Scan0.ToPointer(), imagesize, vert);
+
+
+            }
+            stopCPP.Stop();
+            labelCPP.Text = stopCPP.ElapsedTicks.ToString();
+            stopCPP.Reset();
+            pic.Image = bmpFront;
+            bmpFront.UnlockBits(bitdata);
+        }
+
+
 
 
       
