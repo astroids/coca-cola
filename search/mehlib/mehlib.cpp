@@ -259,7 +259,7 @@ bool stateRWR(){
 		if (limit < (36 * white1) + mainL){
 			return STATE0(); 
 		}
-		else if (white1 > (vert / 10)){
+		else if (white1 > (vert / 16)){
 			return STATE0;
 		}else
 		{
@@ -617,12 +617,13 @@ bool fadeTOGREEN(){
 	///																							burası array overflova davet
 	for (size_t i = 0; i < 5; i++)
 	{
-		STARTPOINT += vert;
-		mainL += vert;
+		
 		for (STARTPOINT; STARTPOINT < mainL; STARTPOINT++)
 		{
 			par[STARTPOINT] = 0;
 		}
+		STARTPOINT += vert*3;
+		mainL += vert*3;
 	}
 
 	//system("exit");

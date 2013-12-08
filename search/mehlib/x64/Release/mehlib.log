@@ -1,4 +1,4 @@
-﻿Build started 29/11/2013 13:43:29.
+﻿Build started 08/12/2013 15:43:21.
      1>Project "G:\Engi\Git\coca-cola\search\mehlib\mehlib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\AMD64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MEHLIB_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release\mehlib.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt mehlib.cpp
@@ -18,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.83
+Time Elapsed 00:00:02.76
