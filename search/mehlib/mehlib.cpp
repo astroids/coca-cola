@@ -297,6 +297,9 @@ bool stateRWR(){
 
 
 bool stateRWRW(){
+	if (banana > white1 * 5){
+		return STATE0;
+	}
 	banana = 0;
 	paras = 0;
 	firstPhase = mainL + (white1 * 3);
@@ -613,17 +616,17 @@ bool jumpEND(){
 
 bool fadeTOGREEN(){
 
-	
+	size_t st = STARTPOINT;
 	///																							burası array overflova davet
-	for (size_t i = 0; i < 5; i++)
+	for (size_t i = 1; i < 4; i++)
 	{
 		
 		for (STARTPOINT; STARTPOINT < mainL; STARTPOINT++)
 		{
 			par[STARTPOINT] = 0;
 		}
-		STARTPOINT += vert*3;
-		mainL += vert*3;
+		STARTPOINT = st+ vert*i;
+		mainL += vert;
 	}
 
 	//system("exit");
