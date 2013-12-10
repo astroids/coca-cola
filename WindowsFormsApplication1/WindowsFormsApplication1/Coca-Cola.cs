@@ -547,6 +547,37 @@ namespace WindowsFormsApplication1
             bmpFront.UnlockBits(bitdata);
         }
 
+        private void openToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+            OpenFileDialog asd = new OpenFileDialog();
+            if (asd.ShowDialog() == DialogResult.OK)        //file dialog acildi eger secerse bi resim
+            {
+                try
+                {
+
+                    {
+                        // load image to bitmap handle
+                        // bmpFront = new Bitmap(new MemoryStream(Image.FromFile(asd.))).GetHbitmap();
+                        // COPY ATM CHANGE TO HANDLE
+                        bmpFront = (Bitmap)Image.FromFile(asd.FileName);
+                        SaveOriginal(bmpFront);
+                        vert = bmpFront.Width;
+                        pic.Image = bmpFront;
+                        trackCS.Enabled = true;
+                        trackCPP.Enabled = true;
+                        trackASM.Enabled = true;
+                        findToolStripMenuItem.Enabled = true;
+                        cocaColaToolStripMenuItem.Enabled = true;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("File Coulnt't be opend");
+                }
+            }
+        }
+
 
 
 

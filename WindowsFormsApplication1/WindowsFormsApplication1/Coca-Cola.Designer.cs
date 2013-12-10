@@ -32,9 +32,6 @@
             this.trackCS = new System.Windows.Forms.TrackBar();
             this.labelCS = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openPict = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findC2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +44,10 @@
             this.trackASM = new System.Windows.Forms.TrackBar();
             this.labelCPP = new System.Windows.Forms.Label();
             this.labelASM = new System.Windows.Forms.Label();
+            this.openPict = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCS)).BeginInit();
             this.menu.SuspendLayout();
@@ -97,6 +98,7 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.findToolStripMenuItem,
+            this.openToolStripMenuItem,
             this.cocaColaToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
@@ -104,29 +106,6 @@
             this.menu.TabIndex = 4;
             this.menu.Text = "menuStrip1";
             this.menu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openPict,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
-            // 
-            // openPict
-            // 
-            this.openPict.Name = "openPict";
-            this.openPict.Size = new System.Drawing.Size(152, 22);
-            this.openPict.Text = "Op&en";
-            this.openPict.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // findToolStripMenuItem
             // 
@@ -237,6 +216,36 @@
             this.labelASM.TabIndex = 8;
             this.labelASM.Text = "ASM average";
             // 
+            // openPict
+            // 
+            this.openPict.Name = "openPict";
+            this.openPict.Size = new System.Drawing.Size(152, 22);
+            this.openPict.Text = "Op&en";
+            this.openPict.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openPict,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click_2);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,9 +279,6 @@
         private System.Windows.Forms.TrackBar trackCS;
         private System.Windows.Forms.Label labelCS;
         private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openPict;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog fileBrowse;
         private System.Windows.Forms.TrackBar trackCPP;
         private System.Windows.Forms.TrackBar trackASM;
@@ -285,6 +291,10 @@
         private System.Windows.Forms.ToolStripMenuItem colorAnalizerForCpp;
         private System.Windows.Forms.ToolStripMenuItem findCocaColaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cocaColaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openPict;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
     }
 }
 

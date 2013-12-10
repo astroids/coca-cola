@@ -104,7 +104,7 @@ extern "C" { void _declspec(dllexport) searchrw(unsigned char*  sour, INT32 size
 	limit = size - 1000;
 	mainL = 2;
 	STATE0();
-
+	lostAndFound = 0;
 }
 }
 
@@ -118,6 +118,15 @@ bool STATE0()
 	white1 = 0;
 	halfwhite = 0;
 	paras = 0;
+	if (lostAndFound == 1){
+		mainL -= (mainL%(vert));
+		mainL += (vert)+2;
+		lostAndFound = 0;
+	}
+	if (((mainL%(vert))*3) > (vert*3)){																		//3te2den sonra geri geldiyse taramiyo
+		mainL -= (mainL%(vert));
+		mainL += (vert) + 2;
+	}
 
 	/// kirmizimi testi       for (mainL = 2; mainL < par.size() ; mainL+=3) offfff 2den basla
 	for (mainL; mainL < limit; mainL += 3)
@@ -170,7 +179,7 @@ bool stateR() {
 	}
 	if (banana < paras)
 	{
-		return false;
+		return STATE0;
 	}
 
 
@@ -193,7 +202,7 @@ bool stateR() {
 			else {
 				paras++;							////////////      kirmizi paraziti bu değeri ince ayarla
 				if (paras * 3 > banana){
-					return false;
+					return STATE0;
 				}
 
 			}
@@ -259,9 +268,11 @@ bool stateRWR(){
 		if (limit < (36 * white1) + mainL){
 			return STATE0(); 
 		}
-		else if (white1 > (vert / 16)){
+		//else if (white1 > (vert / 16)){
+		else if (white1 > 30||white1<5){
 			return STATE0;
 		}else
+
 		{
 
 
@@ -297,7 +308,7 @@ bool stateRWR(){
 
 
 bool stateRWRW(){
-	if (banana > white1 * 5){
+	if (banana > white1 * 3){
 		return STATE0;
 	}
 	banana = 0;
@@ -625,12 +636,12 @@ bool fadeTOGREEN(){
 		{
 			par[STARTPOINT] = 0;
 		}
-		STARTPOINT = st+ vert*i;
-		mainL += vert;
+		STARTPOINT = st+ (vert*i);
+		mainL += (vert);
 	}
 
 	//system("exit");
 	//STARTPOINT = limit;
 	lostAndFound = true;
-	return 1;
+	return STATE0;
 }
