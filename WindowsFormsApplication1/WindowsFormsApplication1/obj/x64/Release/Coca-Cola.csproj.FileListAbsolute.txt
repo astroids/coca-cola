@@ -16,3 +16,11 @@ G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\
 G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\Release\Coca-Cola.csproj.GenerateResource.Cache
 G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\Release\WindowsFormsApplication1.exe
 G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\Release\WindowsFormsApplication1.pdb
+G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\AForge.dll
+G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\AForge.Imaging.dll
+G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\AForge.Math.dll
+G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\AForge.Video.dll
+G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\AForge.xml
+G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\AForge.Imaging.xml
+G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\AForge.Math.xml
+G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\AForge.Video.xml

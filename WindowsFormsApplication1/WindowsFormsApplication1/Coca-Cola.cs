@@ -13,19 +13,13 @@ using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+using AForge.Video;
+
 
 /*
 TO DO LIST
  * 
  * Fonksiyonlari namespacelere ayir
- * 
- * 
- * 
-
- * 1)fix handles
- * 2)write in ASM
- * 3)start second algorithms if above works 
- * 
  * 
  * NON IMPORTANT STUFF
  * 1)reset trackbar after every pic load
@@ -233,7 +227,7 @@ namespace WindowsFormsApplication1
             pic.Image = bmpFront;
 
             bmpFront.UnlockBits(bitdata);
-
+           // VideoFileReader reader = new VideoFileReader();
         }
 
         private void pic_Click(object sender, EventArgs e)
