@@ -1,0 +1,13 @@
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\bin\Debug\Coca-cola.exe.config
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\bin\Debug\Coca-cola.exe
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\bin\Debug\Coca-cola.pdb
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\bin\Debug\AForge.Video.FFMPEG.dll
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\bin\Debug\AForge.Video.dll
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\bin\Debug\AForge.dll
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\obj\Debug\Coca-cola.csprojResolveAssemblyReference.cache
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\obj\Debug\Coca_cola.Form1.resources
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\obj\Debug\Coca_cola.Properties.Resources.resources
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\obj\Debug\Coca-cola.csproj.GenerateResource.Cache
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\obj\Debug\Coca-cola.exe
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\obj\Debug\Coca-cola.pdb
+H:\Engi\gityedek\~coca\Coca-cola\Coca-cola\bin\Debug\AForge.Video.DirectShow.dll

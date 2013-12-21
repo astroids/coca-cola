@@ -19,4 +19,7 @@
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>H:\Engi\Git\coca-cola\WindowsFormsApplication1\packages\AForge.Video.2.2.5\lib\;H:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\</ReferencePath>
+  </PropertyGroup>
 </Project>

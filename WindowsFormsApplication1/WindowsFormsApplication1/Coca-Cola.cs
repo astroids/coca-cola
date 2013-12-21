@@ -8,13 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text;
 using AForge.Video;
-
+using AForge.Video.FFMPEG;
 
 /*
 TO DO LIST
@@ -52,7 +50,6 @@ namespace WindowsFormsApplication1
         Stopwatch stopCsharp = new Stopwatch();
         Stopwatch stopCPP = new Stopwatch();
         Stopwatch stopASM = new Stopwatch();
-
         public Form1()
         {
             InitializeComponent();
@@ -227,7 +224,6 @@ namespace WindowsFormsApplication1
             pic.Image = bmpFront;
 
             bmpFront.UnlockBits(bitdata);
-           // VideoFileReader reader = new VideoFileReader();
         }
 
         private void pic_Click(object sender, EventArgs e)
@@ -570,6 +566,22 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("File Coulnt't be opend");
                 }
             }
+        }
+
+        private void videoToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            VideoFileReader reader = new VideoFileReader();
+            reader.Open("asd.avi");
+            for ( int i = 0; i < 100; i++ )
+            {
+                Bitmap videoFrame = reader.ReadVideoFrame( );
+
+               // videoFrame.Save(i + ".bmp");
+
+                // dispose the frame when it is no longer required
+                videoFrame.Dispose();
+            }
+            reader.Close();
         }
 
 
