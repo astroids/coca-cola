@@ -1,0 +1,7 @@
+c:\users\shagrath\documents\visual studio 2013\Projects\Coca-Cola Photo\Coca-Cola Photo\bin\x64\Release\Coca-Cola Photo.exe.config
+c:\users\shagrath\documents\visual studio 2013\Projects\Coca-Cola Photo\Coca-Cola Photo\obj\x64\Release\Coca_Cola_Photo.Properties.Resources.resources
+c:\users\shagrath\documents\visual studio 2013\Projects\Coca-Cola Photo\Coca-Cola Photo\obj\x64\Release\Coca-Cola Photo.csproj.GenerateResource.Cache
+c:\users\shagrath\documents\visual studio 2013\Projects\Coca-Cola Photo\Coca-Cola Photo\bin\x64\Release\Coca-Cola Photo.exe
+c:\users\shagrath\documents\visual studio 2013\Projects\Coca-Cola Photo\Coca-Cola Photo\bin\x64\Release\Coca-Cola Photo.pdb
+c:\users\shagrath\documents\visual studio 2013\Projects\Coca-Cola Photo\Coca-Cola Photo\obj\x64\Release\Coca-Cola Photo.exe
+c:\users\shagrath\documents\visual studio 2013\Projects\Coca-Cola Photo\Coca-Cola Photo\obj\x64\Release\Coca-Cola Photo.pdb

@@ -568,22 +568,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void videoToolStripMenuItem_Click(object sender, System.EventArgs e)
-        {
-            VideoFileReader reader = new VideoFileReader();
-            reader.Open("asd.avi");
-            for ( int i = 0; i < 100; i++ )
-            {
-                Bitmap videoFrame = reader.ReadVideoFrame( );
-
-               // videoFrame.Save(i + ".bmp");
-
-                // dispose the frame when it is no longer required
-                videoFrame.Dispose();
-            }
-            reader.Close();
-        }
-
 
 
 
