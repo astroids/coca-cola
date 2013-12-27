@@ -1,8 +1,0 @@
-G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\WindowsFormsApplication1.exe.config
-G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\WindowsFormsApplication1.exe
-G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\bin\x64\Release\WindowsFormsApplication1.pdb
-G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\Release\WindowsFormsApplication1.Form1.resources
-G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\Release\WindowsFormsApplication1.Properties.Resources.resources
-G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
-G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\Release\WindowsFormsApplication1.exe
-G:\Engi\Git\coca-cola\WindowsFormsApplication1\WindowsFormsApplication1\obj\x64\Release\WindowsFormsApplication1.pdb
